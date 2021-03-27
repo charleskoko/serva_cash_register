@@ -18,5 +18,4 @@ class CashFundCubit extends Cubit<CashFundState> {
 
     emit(CashValidated(cashFundConverted));
   }
-
 }

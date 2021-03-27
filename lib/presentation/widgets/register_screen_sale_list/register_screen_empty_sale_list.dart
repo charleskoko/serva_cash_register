@@ -7,7 +7,7 @@ class RegisterScreenEmptySaleList extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.grey.shade100,
         border: Border(
           bottom: BorderSide(color: Colors.grey, width: 0.6),
         ),

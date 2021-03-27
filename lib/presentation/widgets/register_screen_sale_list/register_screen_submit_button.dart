@@ -22,8 +22,9 @@ class RegisterScreenSubmitButton extends StatelessWidget {
         ),
       ),
       style: TextButton.styleFrom(
+        elevation: 0,
         primary: Colors.white,
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blue.shade100,
         onSurface: Colors.grey,
       ),
       onPressed: () {

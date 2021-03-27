@@ -10,11 +10,10 @@ class NavbarArticlesContainer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.grey.shade100,
           border: Border(
               bottom: BorderSide(color: Colors.grey, width: 0.6),
               right: BorderSide(color: Colors.grey, width: 0.6))),
-      // container entete du coté avec la liste des produits.
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

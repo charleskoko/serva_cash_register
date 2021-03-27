@@ -9,7 +9,7 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
       padding: EdgeInsets.all(20),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.grey.shade100,
         border: Border(
           bottom: BorderSide(color: Colors.grey, width: 0.6),
         ),

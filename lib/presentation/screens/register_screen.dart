@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'file:///C:/Users/jepht/development/serva_cash_register/lib/presentation/widgets/register_screen_widgets/navbar/navbar_articles_container.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serva_cash_register/presentation/widgets/register_screen_sale_list/register_screen_empty_sale_list.dart';
 import 'package:serva_cash_register/presentation/widgets/register_screen_sale_list/register_screen_gross_total.dart';
 import 'package:serva_cash_register/presentation/widgets/register_screen_sale_list/register_screen_sale_navbar_add_customer.dart';
@@ -15,13 +14,11 @@ class RegisterScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          //grand container à la taille de l'écran
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Row(
             children: [
               Container(
-                // navbar coté list grid des produits
                 width: MediaQuery.of(context).size.width / 1.4,
                 child: Column(
                   children: [NavbarArticlesContainer(), Container()],
@@ -31,7 +28,7 @@ class RegisterScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width -
                     MediaQuery.of(context).size.width / 1.4,
                 height: MediaQuery.of(context).size.height,
-                color: Colors.white,
+                color: Colors.grey.shade100,
                 child: Column(
                   children: [
                     // entete

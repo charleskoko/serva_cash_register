@@ -6,7 +6,6 @@ class NavbarEditButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print('passer à la caisse avec fond de caisse = 0');
       },
       child: Container(
         padding: EdgeInsets.all(8),

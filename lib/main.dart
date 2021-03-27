@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider<CashRegisterCubit>(
       create: (context) => CashRegisterCubit(_productRepository),
       child: MaterialApp(
-        theme: new ThemeData(scaffoldBackgroundColor: Colors.grey.shade200),
+        theme: new ThemeData(scaffoldBackgroundColor: Colors.grey.shade300),
         onGenerateRoute: _appRouter.onGenerateRoute,
       ),
     );

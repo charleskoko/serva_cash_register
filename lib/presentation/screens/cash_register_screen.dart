@@ -15,7 +15,7 @@ import 'package:serva_cash_register/presentation/widgets/register_screen_general
 import 'package:serva_cash_register/presentation/widgets/register_screen_widgets/cash_register_navbar/navbar_articles_container.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class RegisterScreen extends StatelessWidget {
+class CashRegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

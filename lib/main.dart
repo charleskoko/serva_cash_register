@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:serva_cash_register/data/repositories/listing_repository.dart';
-import 'package:serva_cash_register/data/repositories/product_repositories.dart';
+import 'package:serva_cash_register/data/repositories/product_repository.dart';
 import 'package:serva_cash_register/logic/cash_fund_cubit.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';

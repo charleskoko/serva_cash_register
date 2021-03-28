@@ -11,7 +11,7 @@ class NavbarNewArticleButton extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(8),
         child: Text(
-          'Crée un article',
+          'Créer un article',
           style: TextStyle(
               color: Colors.blueAccent,
               fontFamily: 'SourceSansPro',

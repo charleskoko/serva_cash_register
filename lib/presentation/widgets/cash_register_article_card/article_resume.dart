@@ -22,7 +22,7 @@ class ArticleResume extends StatelessWidget {
                 color: Colors.white),
           ),
           Text(
-          listing.length.toString(),
+          '0',
             style: TextStyle(
                 fontFamily: 'SourceSansPro',
                 fontSize: 30,

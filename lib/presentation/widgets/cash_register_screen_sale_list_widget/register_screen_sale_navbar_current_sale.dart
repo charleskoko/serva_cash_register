@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 
 class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
   @override
@@ -24,14 +26,28 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
               FontAwesomeIcons.trashAlt,
               color: Colors.grey.shade300,
             ),
-            Text(
-              'Vente en cours',
-              style: TextStyle(
-                  color: Colors.blueAccent,
-                  fontFamily: 'SourceSansPro',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-            ),
+            BlocBuilder<CashRegisterCubit, CashRegisterState>(
+                builder: (context, state) {
+              if (state is CashRegisterInitial) {
+                return Text(
+                  'Vente en cours',
+                  style: TextStyle(
+                      color: Colors.blueAccent,
+                      fontFamily: 'SourceSansPro',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                );
+              } else {
+                return Text(
+                  'Enregistrer la vente',
+                  style: TextStyle(
+                      color: Colors.blueAccent,
+                      fontFamily: 'SourceSansPro',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                );
+              }
+            }),
             Icon(
               FontAwesomeIcons.percent,
               color: Colors.grey.shade300,

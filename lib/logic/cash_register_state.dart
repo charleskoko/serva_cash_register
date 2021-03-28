@@ -13,11 +13,6 @@ class ProductLoading extends CashRegisterState {
   const ProductLoading();
 }
 
-class CashFundValidated extends CashRegisterState {
-  final int cashFund;
-  const CashFundValidated(this.cashFund);
-}
-
 class ProductLoaded extends CashRegisterState {
   final List<Product> products;
   const ProductLoaded(this.products);
@@ -27,13 +22,12 @@ class ProductError extends CashRegisterState {
   const ProductError();
 }
 
-class SumLoading extends CashRegisterState {
-  const SumLoading();
+class ListUpdating extends CashRegisterState {
+  const ListUpdating();
 }
 
-class SumLoaded extends CashRegisterState {
-  final List<Product> products;
-  const SumLoaded(this.products);
+class ListUpdated extends CashRegisterState {
+  const ListUpdated();
 }
 
 class SumError extends CashRegisterState {

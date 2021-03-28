@@ -9,20 +9,9 @@ class CashRegisterCubit extends Cubit<CashRegisterState> {
   final ProductRepository _productRepository;
   CashRegisterCubit(this._productRepository) : super(CashRegisterInitial());
 
-  setCashFund(String cashFund) {
-    int cashFundConverted;
-    if (cashFund == null) {
-      cashFundConverted = 0;
-    } else {
-      cashFundConverted = int.parse(cashFund);
-    }
-
-    emit(CashFundValidated(cashFundConverted));
-  }
-
-  Future<void> getProducts() async {
+  Future<void> getArticle() async {
     emit(ProductLoading());
-    final List<Product> products = await _productRepository.fecthProduct();
+    final List<Product> products = await _productRepository.fetchProduct();
     emit(ProductLoaded(products));
   }
 }

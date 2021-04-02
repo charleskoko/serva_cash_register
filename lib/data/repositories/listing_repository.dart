@@ -22,4 +22,11 @@ class ListingRepository {
     listing.add(newArticle);
     return listing;
   }
+
+  List<Map<String, dynamic>> removeArticleToListing(
+      Product product, List<Map<String, dynamic>> listing) {
+    listing.removeWhere((item) => item['product'] == product);
+
+    return listing;
+  }
 }

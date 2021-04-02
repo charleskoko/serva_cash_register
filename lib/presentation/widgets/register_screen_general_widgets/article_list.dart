@@ -13,7 +13,7 @@ class ArticleList extends StatelessWidget {
           gridDelegate:
           SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 250,
-              childAspectRatio: 0.8,
+              childAspectRatio: 1,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10),
           itemCount: products.length,

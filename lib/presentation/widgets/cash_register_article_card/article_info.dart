@@ -10,30 +10,24 @@ class ArticleInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: Colors.white,
+        color: Colors.grey.shade300,
         padding: EdgeInsets.only(top: 3),
         child: Column(
           children: [
             Container(
-              width:
-              MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width,
               child: Text(
                 product.label,
-                style: TextStyle(
-                    fontSize: 25,
-                    fontFamily: 'SourceSansPro'),
+                style: TextStyle(fontSize: 25, fontFamily: 'SourceSansPro'),
                 textAlign: TextAlign.center,
               ),
             ),
             SizedBox(height: 10),
             Container(
-              width:
-              MediaQuery.of(context).size.width,
+              width: MediaQuery.of(context).size.width,
               child: Text(
-              product.price.toString()+ ' Fr',
-                style: TextStyle(
-                    fontFamily: 'SourceSansPro',
-                    fontSize: 20),
+                product.price.toString() + ' Fr',
+                style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 20),
                 textAlign: TextAlign.center,
               ),
             )

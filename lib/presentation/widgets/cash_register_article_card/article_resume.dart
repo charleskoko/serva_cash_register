@@ -10,7 +10,7 @@ class ArticleResume extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(right: 4),
       width: MediaQuery.of(context).size.width,
-      height: 40,
+      height: 30,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -25,7 +25,7 @@ class ArticleResume extends StatelessWidget {
           articleSum.toString(),
             style: TextStyle(
                 fontFamily: 'SourceSansPro',
-                fontSize: 30,
+                fontSize: 20,
                 color: Colors.white),
           ),
         ],

@@ -18,7 +18,7 @@ class ArticleList extends StatelessWidget {
               mainAxisSpacing: 10),
           itemCount: products.length,
           itemBuilder: (BuildContext ctx, index) {
-            return ArticleCard(product: products[index],);
+            return ArticleCard(product: products[index]);
           }),
     );
   }

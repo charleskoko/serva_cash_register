@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreenSubmitButton extends StatelessWidget {
+  final double grossTotal;
+
+  const RegisterScreenSubmitButton({this.grossTotal});
   @override
   Widget build(BuildContext context) {
     return TextButton(
@@ -15,7 +18,7 @@ class RegisterScreenSubmitButton extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontFamily: 'SourceSansPro'),
             ),
             Text(
-              '0,00',
+              grossTotal.toString(),
               style: TextStyle(fontSize: 20, fontFamily: 'SourceSansPro'),
             )
           ],
@@ -24,7 +27,7 @@ class RegisterScreenSubmitButton extends StatelessWidget {
       style: TextButton.styleFrom(
         elevation: 0,
         primary: Colors.white,
-        backgroundColor: Colors.blue.shade100,
+        backgroundColor: (grossTotal == 0)?Colors.blue.shade100 : Colors.blue,
         onSurface: Colors.grey,
       ),
       onPressed: () {

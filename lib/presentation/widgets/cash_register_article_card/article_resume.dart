@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ArticleResume extends StatelessWidget {
-  final List<Map<String, dynamic>> listing;
+  final int articleSum;
 
-  ArticleResume({this.listing});
+  ArticleResume({this.articleSum});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +22,7 @@ class ArticleResume extends StatelessWidget {
                 color: Colors.white),
           ),
           Text(
-          '0',
+          articleSum.toString(),
             style: TextStyle(
                 fontFamily: 'SourceSansPro',
                 fontSize: 30,

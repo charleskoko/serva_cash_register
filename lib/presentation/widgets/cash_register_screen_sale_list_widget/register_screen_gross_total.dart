@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class RegisterScreenGrossTotal extends StatelessWidget {
+class RegisterScreenTotalNet extends StatelessWidget {
+  final double totalNet;
+
+  RegisterScreenTotalNet({@required this.totalNet});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,12 +14,16 @@ class RegisterScreenGrossTotal extends StatelessWidget {
           Text(
             'Total brute',
             style: TextStyle(
-                fontFamily: 'SourceSansPro', fontSize: 20),
+                fontFamily: 'SourceSansPro',
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
           ),
           Text(
-            '0,00',
+            totalNet.toString() + ' Fr Cfa',
             style: TextStyle(
-                fontFamily: 'SourceSansPro', fontSize: 20),
+                fontFamily: 'SourceSansPro',
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
           )
         ],
       ),

@@ -7,14 +7,14 @@ part 'listing_state.dart';
 
 class ListingCubit extends Cubit<ListingState> {
   final ListingRepository _listingRepository;
-  ListingCubit(this._listingRepository) : super(ListingInitial(listing: []));
+  ListingCubit(this._listingRepository) : super(ListingState(listing: []));
 
-  addArticleToListing(Product product) async {
-    emit(ListingUpdating());
+  void
+
+  addArticleToListing(Product product) {
     List<Map<String, dynamic>> updatedListing =
         _listingRepository.addArticleToListing(product, state.listing);
-    print(updatedListing);
-    emit(ListingUpdated(listing: updatedListing));
+    emit(ListingState(listing: updatedListing));
   }
 
 }

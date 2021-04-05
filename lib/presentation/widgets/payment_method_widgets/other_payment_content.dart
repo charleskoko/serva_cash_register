@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:serva_cash_register/logic/payment_completed_cubit.dart';
 
 class OtherPaymentContent extends StatelessWidget {
   @override
@@ -40,11 +42,13 @@ class OtherPaymentContent extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Map<String, dynamic> data = {
+                    Map<String, dynamic> paymentMethod = {
                       'paymentMethod': 'Orange',
                       'value': null
                     };
-                    print(data);
+                    Navigator.of(context).pushNamed('/paymentCompleted');
+                    BlocProvider.of<PaymentCompletedCubit>(context)
+                        .paymentCompleted(paymentMethod);
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -64,11 +68,13 @@ class OtherPaymentContent extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Map<String, dynamic> data = {
+                    Map<String, dynamic> paymentMethod = {
                       'paymentMethod': 'MTN',
                       'value': null
                     };
-                    print(data);
+                    Navigator.of(context).pushNamed('/paymentCompleted');
+                    BlocProvider.of<PaymentCompletedCubit>(context)
+                        .paymentCompleted(paymentMethod);
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -88,11 +94,13 @@ class OtherPaymentContent extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Map<String, dynamic> data = {
+                    Map<String, dynamic> paymentMethod = {
                       'paymentMethod': 'Moov',
                       'value': null
                     };
-                    print(data);
+                    Navigator.of(context).pushNamed('/paymentCompleted');
+                    BlocProvider.of<PaymentCompletedCubit>(context)
+                        .paymentCompleted(paymentMethod);
                   },
                   child: Container(
                     alignment: Alignment.center,

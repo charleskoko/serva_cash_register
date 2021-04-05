@@ -7,6 +7,7 @@ import 'package:serva_cash_register/logic/cash_fund_cubit.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/numeric_pad_cubit.dart';
+import 'package:serva_cash_register/logic/payment_completed_cubit.dart';
 import 'package:serva_cash_register/logic/payment_method_cubit.dart';
 import 'package:serva_cash_register/presentation/router/app_router.dart';
 
@@ -52,6 +53,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<NumericPadCubit>(
           create: (context) => NumericPadCubit(),
+        ),
+        BlocProvider<PaymentCompletedCubit>(
+          create: (context) => PaymentCompletedCubit(),
         ),
       ],
       child: MaterialApp(

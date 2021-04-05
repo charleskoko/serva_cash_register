@@ -1,14 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
-import 'package:serva_cash_register/logic/numeric_pad_cubit.dart';
 import 'package:serva_cash_register/logic/payment_method_cubit.dart';
 import 'package:serva_cash_register/logic/utility.dart';
-import 'package:serva_cash_register/presentation/widgets/numeric_pad_button.dart';
-import 'package:serva_cash_register/presentation/widgets/payment_method_widgets/cash_payment_selected_content.dart';
+import 'package:serva_cash_register/presentation/widgets/payment_method_widgets/cash_payment_content.dart';
 import 'package:serva_cash_register/presentation/widgets/payment_method_widgets/gross_total_card.dart';
 import 'package:serva_cash_register/presentation/widgets/payment_method_widgets/other_payment_content.dart';
 import 'package:serva_cash_register/presentation/widgets/payment_method_widgets/payments_tabs_card.dart';
@@ -61,8 +57,7 @@ class PaymentMethodScreen extends StatelessWidget {
               BlocBuilder<ListingCubit, ListingState>(
                 builder: (context, state) {
                   return GrossTotalCard(
-                    total:  Utility.grossTotal(
-                        Utility.totalNet(state.listing)),
+                    total: Utility.grossTotal(Utility.totalNet(state.listing)),
                   );
                 },
               ),
@@ -73,7 +68,12 @@ class PaymentMethodScreen extends StatelessWidget {
                     if (state is PaymentMethodInitial) {
                       return Container();
                     } else if (state is CashSelected) {
-                      return CashPaymentContent();
+                      return BlocBuilder<ListingCubit, ListingState>(
+                        builder: (context, state) {
+                          return CashPaymentContent(Utility.grossTotal(
+                              Utility.totalNet(state.listing)));
+                        },
+                      );
                     } else {
                       return OtherPaymentContent();
                     }

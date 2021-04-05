@@ -32,4 +32,27 @@ class Utility {
     return sum;
   }
 
+  static checkCash(String cash, double total) {
+    bool isCashEnough = false;
+    double convertedCash;
+    if (cash != 'c' && cash != 'delete') {
+      convertedCash = double.parse(cash);
+      if (convertedCash - total > 0) {
+        isCashEnough = true;
+      }
+    }
+
+    return isCashEnough;
+  }
+
+  static change(double total, Map<String, dynamic> paymentMethod) {
+    String change = 'Rien à rendre';
+
+    if (paymentMethod['paymentMethod'] == 'cash') {
+      double cashToDouble = double.parse(paymentMethod['value']);
+      change = (cashToDouble - total).toStringAsFixed(2) + ' XOF';
+    }
+
+    return change;
+  }
 }

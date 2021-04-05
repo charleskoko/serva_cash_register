@@ -19,7 +19,7 @@ class RegisterScreenTotalNet extends StatelessWidget {
                 fontWeight: FontWeight.bold),
           ),
           Text(
-            totalNet.toString() + ' Fr Cfa',
+            totalNet.toString() + ' XOF',
             style: TextStyle(
                 fontFamily: 'SourceSansPro',
                 fontSize: 20,

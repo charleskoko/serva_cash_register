@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:serva_cash_register/logic/payment_method_cubit.dart';
 
 class RegisterScreenSubmitButton extends StatelessWidget {
   final double grossTotal;
@@ -18,7 +20,7 @@ class RegisterScreenSubmitButton extends StatelessWidget {
               style: TextStyle(fontSize: 20, fontFamily: 'SourceSansPro'),
             ),
             Text(
-              grossTotal.toString(),
+              grossTotal. toStringAsFixed(2)+' XOF',
               style: TextStyle(fontSize: 20, fontFamily: 'SourceSansPro'),
             )
           ],
@@ -31,7 +33,11 @@ class RegisterScreenSubmitButton extends StatelessWidget {
         onSurface: Colors.grey,
       ),
       onPressed: () {
-        print('Pressed');
+        if(grossTotal != 0){
+          Navigator.of(context)
+              .pushNamed('/paymentMethod');
+          BlocProvider.of<PaymentMethodCubit>(context).cashSelected();
+        }
       },
     );
   }

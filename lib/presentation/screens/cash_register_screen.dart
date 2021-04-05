@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/utility.dart';
+import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_list_item.dart';
 import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_empty_sale_list.dart';
 import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_gross_total.dart';
 import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_sale_navbar_add_customer.dart';
@@ -70,112 +71,7 @@ class CashRegisterScreen extends StatelessWidget {
                         if (state.listing.length == 0) {
                           return RegisterScreenEmptySaleList();
                         } else {
-                          return Expanded(
-                            child: ListView.builder(
-                              itemCount: state.listing.length,
-                              shrinkWrap: true,
-                              itemBuilder: (BuildContext context, int index) =>
-                                  Dismissible(
-                                background: Container(
-                                  padding: EdgeInsets.all(20),
-                                  width: MediaQuery.of(context).size.width,
-                                  color: Colors.red.shade300,
-                                  child: Center(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          FontAwesomeIcons.trashAlt,
-                                          size: 20,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(width: 10),
-                                        Text(
-                                          'Supprimer',
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontFamily: 'SourceSansPro',
-                                              color: Colors.white,
-                                              fontSize: 20),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                key: Key(state.listing[index]['product'].id),
-                                direction: DismissDirection.startToEnd,
-                                onDismissed: (direction) {
-                                  BlocProvider.of<ListingCubit>(context)
-                                      .removeArticleToList(
-                                          state.listing[index]['product']);
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                          color: Colors.grey.shade300),
-                                    ),
-                                  ),
-                                  padding: EdgeInsets.all(10),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            child: Text(
-                                              '00017',
-                                              style: TextStyle(
-                                                  fontFamily: 'SourceSansPro',
-                                                  fontSize: 20),
-                                            ),
-                                          ),
-                                          Container(
-                                            child: Text(
-                                              state.listing[index]['quantity']
-                                                      .toString() +
-                                                  'x ' +
-                                                  state
-                                                      .listing[index]['product']
-                                                      .price
-                                                      .toString() +
-                                                  ' Fr Cfa',
-                                              style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontFamily: 'SourceSansPro'),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            state.listing[index]['product']
-                                                .label,
-                                            style: TextStyle(
-                                                fontFamily: 'SourceSansPro',
-                                                fontSize: 20),
-                                          ),
-                                          Text(
-                                            state.listing[index]['total']
-                                                    .toString() +
-                                                ' Fr Cfa',
-                                            style: TextStyle(
-                                                fontSize: 20,
-                                                fontFamily: 'SourceSansPro',
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
+                          return RegisterListItem(listing: state.listing);
                         }
                       },
                     ),

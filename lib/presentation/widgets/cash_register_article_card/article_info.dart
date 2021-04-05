@@ -10,7 +10,7 @@ class ArticleInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: Colors.grey.shade300,
+        color: Colors.grey.shade100,
         padding: EdgeInsets.only(top: 3),
         child: Column(
           children: [
@@ -26,7 +26,7 @@ class ArticleInfo extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width,
               child: Text(
-                product.price.toString() + ' Fr',
+                product.price.toString() + ' XOF',
                 style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 20),
                 textAlign: TextAlign.center,
               ),

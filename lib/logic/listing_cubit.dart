@@ -9,9 +9,9 @@ class ListingCubit extends Cubit<ListingState> {
   final ListingRepository _listingRepository;
   ListingCubit(this._listingRepository) : super(ListingState(listing: []));
 
-  void addArticleToListing(Product product) {
-    List<Map<String, dynamic>> updatedListing =
-        _listingRepository.addArticleToListing(product, state.listing);
+  void addArticleToListing(Product product, {String quantity}) {
+    List<Map<String, dynamic>> updatedListing = _listingRepository
+        .addArticleToListing(product, state.listing, quantity: quantity);
     emit(ListingState(listing: updatedListing));
   }
 
@@ -19,5 +19,9 @@ class ListingCubit extends Cubit<ListingState> {
     List<Map<String, dynamic>> updatedListing =
         _listingRepository.removeArticleToListing(product, state.listing);
     emit(ListingState(listing: updatedListing));
+  }
+
+  void deleteList(){
+    emit(ListingState(listing: []));
   }
 }

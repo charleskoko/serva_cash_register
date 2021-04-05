@@ -119,7 +119,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(7)),
+                                      child: NumericPadKey(7, keyHeight: 100, keyWidth: 150,)),
                                   // a faire disparaitre
 
                                   SizedBox(
@@ -139,7 +139,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(8)),
+                                      child: NumericPadKey(8, keyHeight: 100, keyWidth: 150,)),
                                   SizedBox(
                                     width: 10,
                                   ),
@@ -155,7 +155,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(9)),
+                                      child: NumericPadKey(9, keyHeight: 100, keyWidth: 150,)),
                                 ],
                               ),
                             ),
@@ -176,7 +176,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(4)),
+                                      child: NumericPadKey(4, keyHeight: 100, keyWidth: 150,)),
                                   SizedBox(
                                     width: 10,
                                   ),
@@ -192,7 +192,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(5)),
+                                      child: NumericPadKey(5, keyHeight: 100, keyWidth: 150,)),
                                   SizedBox(
                                     width: 10,
                                   ),
@@ -208,7 +208,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(6)),
+                                      child: NumericPadKey(6, keyHeight: 100, keyWidth: 150,)),
                                 ],
                               ),
                             ),
@@ -229,7 +229,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(1)),
+                                      child: NumericPadKey(1, keyHeight: 100, keyWidth: 150,)),
                                   SizedBox(
                                     width: 10,
                                   ),
@@ -245,7 +245,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(2)),
+                                      child: NumericPadKey(2, keyHeight: 100, keyWidth: 150,)),
                                   SizedBox(
                                     width: 10,
                                   ),
@@ -261,7 +261,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(3)),
+                                      child: NumericPadKey(3, keyHeight: 100, keyWidth: 150,)),
                                 ],
                               ),
                             ),
@@ -276,7 +276,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           cashFund = null;
                                         });
                                       },
-                                      child: NumericPadKey('c')),
+                                      child: NumericPadKey('c', keyHeight: 100, keyWidth: 150,)),
                                   SizedBox(
                                     width: 10,
                                   ),
@@ -292,7 +292,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           }
                                         });
                                       },
-                                      child: NumericPadKey(0)),
+                                      child: NumericPadKey(0, keyHeight: 100, keyWidth: 150)),
                                   SizedBox(
                                     width: 10,
                                   ),
@@ -307,7 +307,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                           });
                                         }
                                       },
-                                      child: NumericPadKey('delete')),
+                                      child: NumericPadKey('delete',keyHeight: 100, keyWidth: 150,)),
                                 ],
                               ),
                             ),

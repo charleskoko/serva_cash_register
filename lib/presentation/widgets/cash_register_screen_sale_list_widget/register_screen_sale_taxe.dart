@@ -16,7 +16,7 @@ class RegisterScreenSaleTax extends StatelessWidget {
                 color: Colors.grey.shade500),
           ),
           Text(
-            '16%',
+            '18%',
             style: TextStyle(
                 fontFamily: 'SourceSansPro',
                 fontSize: 18,

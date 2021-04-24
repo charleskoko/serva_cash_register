@@ -40,7 +40,7 @@ class RegisterListItem extends StatelessWidget {
                             shape: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(16.0)),
                             content: Container(
-                              width: 600,
+                              width: 500,
                               height: 150,
                               child: Column(
                                 children: [
@@ -55,15 +55,10 @@ class RegisterListItem extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Icon(
-                                          FontAwesomeIcons.exclamationTriangle,
-                                          size: 20,
-                                        ),
-                                        SizedBox(width: 15),
                                         Text(
                                           'Attention'.toUpperCase(),
                                           style: TextStyle(
-                                              fontSize: 25,
+                                              fontSize: 15,
                                               fontFamily: 'SourceSansPro',
                                               fontWeight: FontWeight.bold),
                                         )
@@ -72,11 +67,12 @@ class RegisterListItem extends StatelessWidget {
                                   ),
                                   SizedBox(height: 10),
                                   Container(
+                                    padding: EdgeInsets.all(8),
                                     alignment: Alignment.center,
                                     child: Text(
                                       'Voulez-vous vraiment supprimer cette article de la liste en cours?',
                                       style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 15,
                                         fontFamily: 'SourceSansPro',
                                       ),
                                     ),
@@ -145,7 +141,7 @@ class RegisterListItem extends StatelessWidget {
                 bottom: BorderSide(color: Colors.grey.shade300),
               ),
             ),
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(5),
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -156,7 +152,7 @@ class RegisterListItem extends StatelessWidget {
                       child: Text(
                         '00017',
                         style: TextStyle(
-                            fontFamily: 'SourceSansPro', fontSize: 20),
+                            fontFamily: 'SourceSansPro', fontSize: 15),
                       ),
                     ),
                     Container(
@@ -166,7 +162,7 @@ class RegisterListItem extends StatelessWidget {
                             listing[index]['product'].price.toString() +
                             ' XOF',
                         style: TextStyle(
-                            fontSize: 20, fontFamily: 'SourceSansPro'),
+                            fontSize: 15, fontFamily: 'SourceSansPro'),
                       ),
                     ),
                   ],
@@ -177,12 +173,12 @@ class RegisterListItem extends StatelessWidget {
                     Text(
                       listing[index]['product'].label,
                       style:
-                          TextStyle(fontFamily: 'SourceSansPro', fontSize: 20),
+                          TextStyle(fontFamily: 'SourceSansPro', fontSize: 17),
                     ),
                     Text(
                       listing[index]['total'].toString() + ' XOF',
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 17,
                           fontFamily: 'SourceSansPro',
                           fontWeight: FontWeight.bold),
                     ),

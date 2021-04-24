@@ -18,16 +18,16 @@ class ArticleInfo extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: Text(
                 product.label,
-                style: TextStyle(fontSize: 25, fontFamily: 'SourceSansPro'),
+                style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Container(
               width: MediaQuery.of(context).size.width,
               child: Text(
                 product.price.toString() + ' XOF',
-                style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 20),
+                style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 15),
                 textAlign: TextAlign.center,
               ),
             )

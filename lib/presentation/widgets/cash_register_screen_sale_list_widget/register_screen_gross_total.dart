@@ -15,14 +15,14 @@ class RegisterScreenTotalNet extends StatelessWidget {
             'Total brute',
             style: TextStyle(
                 fontFamily: 'SourceSansPro',
-                fontSize: 20,
+                fontSize: 15,
                 fontWeight: FontWeight.bold),
           ),
           Text(
             totalNet.toString() + ' XOF',
             style: TextStyle(
                 fontFamily: 'SourceSansPro',
-                fontSize: 20,
+                fontSize: 15,
                 fontWeight: FontWeight.bold),
           )
         ],

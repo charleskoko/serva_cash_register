@@ -15,7 +15,7 @@ class PaymentMethodScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(8),
           child: Column(
             children: [
               Container(
@@ -27,7 +27,7 @@ class PaymentMethodScreen extends StatelessWidget {
                         child: Text(
                           'Retour',
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 15,
                               fontFamily: 'SourceSansPro',
                               fontWeight: FontWeight.bold),
                         ),
@@ -44,7 +44,7 @@ class PaymentMethodScreen extends StatelessWidget {
                         '',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 25,
+                            fontSize: 15,
                             fontFamily: 'SourceSansPro'),
                       ),
                     ),

@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.white,
                 padding: EdgeInsets.all(10),
                 width: MediaQuery.of(context1).size.width,
-                height: 60,
+                height: 40,
                 child: Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                             fontFamily: 'SourceSansPro',
                             letterSpacing: 1.5,
-                            fontSize: 25,
+                            fontSize: 15,
                           ),
                         ),
                       ),
@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               'Charles Koko',
                               style: TextStyle(
-                                  fontSize: 25,
+                                  fontSize: 15,
                                   fontFamily: 'SourceSansPro',
                                   letterSpacing: 1.5,
                                   fontWeight: FontWeight.bold),
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(5.0),
               child: Container(
                 width: MediaQuery.of(context1).size.width,
                 height: MediaQuery.of(context1).size.height / 1.2,
@@ -64,14 +64,14 @@ class HomeScreen extends StatelessWidget {
                       elevation: 10,
                       child: Container(
                         color: Colors.blueAccent,
-                        height: 100,
+                        height: 50,
                         child: Center(
                           child: Text(
                             'Bienvenue Charles !',
                             style: TextStyle(
                               fontFamily: 'Pacifico',
                               color: Colors.white,
-                              fontSize: 60,
+                              fontSize: 20,
                             ),
                           ),
                         ),
@@ -96,11 +96,11 @@ class HomeScreen extends StatelessWidget {
                               },
                               child: Container(
                                 alignment: Alignment.center,
-                                width: 200,
-                                height: 200,
+                                width: 150,
+                                height: 150,
                                 child: Icon(
                                   FontAwesomeIcons.cogs,
-                                  size: 90,
+                                  size: 60,
                                 ),
                               ),
                             ),
@@ -134,11 +134,11 @@ class HomeScreen extends StatelessWidget {
                               },
                               child: Container(
                                 alignment: Alignment.center,
-                                width: 200,
-                                height: 200,
+                                width: 150,
+                                height: 150,
                                 child: Icon(
                                   FontAwesomeIcons.cashRegister,
-                                  size: 80,
+                                  size: 60,
                                 ),
                               ),
                             ),

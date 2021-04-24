@@ -5,10 +5,9 @@ class NavbarEditButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-      },
+      onTap: () {},
       child: Container(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.only(left: 5),
         child: Text(
           'Modifier',
           style: TextStyle(

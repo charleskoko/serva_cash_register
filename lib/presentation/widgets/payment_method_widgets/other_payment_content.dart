@@ -8,11 +8,11 @@ class OtherPaymentContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 30),
+      padding: EdgeInsets.only(top: 5),
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(5),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               border: Border(
@@ -27,11 +27,11 @@ class OtherPaymentContent extends StatelessWidget {
                     Row(
                       children: [
                         Icon(FontAwesomeIcons.mobile),
-                        SizedBox(width: 10),
+                        SizedBox(width: 5),
                         Text(
                           'Mobile money',
                           style: TextStyle(
-                              fontSize: 28,
+                              fontSize: 20,
                               fontFamily: 'SourceSansPro',
                               fontWeight: FontWeight.bold),
                         )
@@ -53,14 +53,14 @@ class OtherPaymentContent extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(color: Colors.grey.shade300))),
                     child: Text(
                       'Orange money',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 17,
                         fontFamily: 'SourceSansPro',
                       ),
                     ),
@@ -79,14 +79,14 @@ class OtherPaymentContent extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                         border: Border(
                             bottom: BorderSide(color: Colors.grey.shade300))),
                     child: Text(
                       'MTN Mobile money',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 17,
                         fontFamily: 'SourceSansPro',
                       ),
                     ),
@@ -105,11 +105,11 @@ class OtherPaymentContent extends StatelessWidget {
                   child: Container(
                     alignment: Alignment.center,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(5),
                     child: Text(
                       'Moov Flooz',
                       style: TextStyle(
-                        fontSize: 25,
+                        fontSize: 17,
                         fontFamily: 'SourceSansPro',
                       ),
                     ),

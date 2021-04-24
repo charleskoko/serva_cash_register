@@ -9,6 +9,10 @@ class PaymentCompletedCubit extends Cubit<PaymentCompletedState> {
   void paymentCompleted(Map<String, dynamic> paymentMethod){
     emit(PaymentCompletedState(paymentMethod: paymentMethod));
   }
+
+  void paymentDeleted(){
+    emit(PaymentCompletedState(paymentMethod: {}));
+  }
 }
 
 

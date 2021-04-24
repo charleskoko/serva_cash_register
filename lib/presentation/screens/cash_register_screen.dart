@@ -89,9 +89,7 @@ class CashRegisterScreen extends StatelessWidget {
                             return RegisterScreenTotalNet(
                                 totalNet: Utility.totalNet(state.listing));
                           }),
-                          SizedBox(height: 10),
                           RegisterScreenSaleTax(),
-                          SizedBox(height: 10),
                           BlocBuilder<ListingCubit, ListingState>(
                               builder: (context, state) {
                             return RegisterScreenSubmitButton(

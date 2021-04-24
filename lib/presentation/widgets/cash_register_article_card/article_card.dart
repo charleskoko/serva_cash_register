@@ -46,7 +46,7 @@ class ArticleCard extends StatelessWidget {
                           child: Column(
                             children: [
                               Container(
-                                padding: EdgeInsets.all(10),
+                                padding: EdgeInsets.all(5),
                                 width: MediaQuery.of(context).size.width,
                                 decoration: BoxDecoration(
                                     border: Border(
@@ -63,7 +63,7 @@ class ArticleCard extends StatelessWidget {
                                     Text(
                                       'Quantité'.toUpperCase(),
                                       style: TextStyle(
-                                          fontSize: 25,
+                                          fontSize: 10,
                                           fontFamily: 'SourceSansPro',
                                           fontWeight: FontWeight.bold),
                                     )
@@ -72,7 +72,7 @@ class ArticleCard extends StatelessWidget {
                               ),
                               SizedBox(height: 10),
                               Container(
-                                  padding: EdgeInsets.all(20),
+                                  padding: EdgeInsets.all(5),
                                   alignment: Alignment.center,
                                   child: TextField(
                                     controller: quantityController,
@@ -134,10 +134,8 @@ class ArticleCard extends StatelessWidget {
                 // ignore: missing_return
                 pageBuilder: (context, animation1, animation2) {});
           },
+          //article card
           child: Container(
-            padding: EdgeInsets.only(left: 4, right: 4, bottom: 4),
-            width: 250,
-            height: 250,
             color: (Utility.selectedArticle(product, state.listing) == 0)
                 ? Colors.white
                 : Colors.blue,

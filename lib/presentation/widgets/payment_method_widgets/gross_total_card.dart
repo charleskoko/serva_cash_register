@@ -14,12 +14,12 @@ class GrossTotalCard extends StatelessWidget {
         children: [
           Text(
             'Total',
-            style: TextStyle(fontSize: 25, fontFamily: 'SourceSansPro'),
+            style: TextStyle(fontSize: 17, fontFamily: 'SourceSansPro'),
           ),
           Text(
             total.toStringAsFixed(2) + ' XOF',
             style: TextStyle(
-              fontSize: 60,
+              fontSize: 40,
               fontFamily: 'SourceSansPro',
             ),
           )

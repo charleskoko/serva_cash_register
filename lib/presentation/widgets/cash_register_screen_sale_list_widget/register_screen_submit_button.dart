@@ -11,17 +11,17 @@ class RegisterScreenSubmitButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       child: Padding(
-        padding: const EdgeInsets.all(5.0),
+        padding: const EdgeInsets.all(2),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               'Somme',
-              style: TextStyle(fontSize: 20, fontFamily: 'SourceSansPro'),
+              style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
             ),
             Text(
               grossTotal. toStringAsFixed(2)+' XOF',
-              style: TextStyle(fontSize: 20, fontFamily: 'SourceSansPro'),
+              style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
             )
           ],
         ),

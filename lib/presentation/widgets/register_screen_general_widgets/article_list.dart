@@ -5,14 +5,14 @@ import 'package:serva_cash_register/presentation/widgets/cash_register_article_c
 
 class ArticleList extends StatelessWidget {
   final List<Product> products;
-  const ArticleList({Key key, this.products}) : super(key: key);@override
+  const ArticleList({Key key, this.products}) : super(key: key);
+  @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8),
       child: GridView.builder(
-          gridDelegate:
-          SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 250,
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 220,
               childAspectRatio: 1,
               crossAxisSpacing: 10,
               mainAxisSpacing: 10),

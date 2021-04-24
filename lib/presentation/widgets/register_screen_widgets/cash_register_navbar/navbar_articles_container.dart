@@ -10,7 +10,7 @@ class NavbarArticlesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(12.5),
       decoration: BoxDecoration(
           color: Colors.grey.shade100,
           border: Border(

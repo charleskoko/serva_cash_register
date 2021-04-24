@@ -30,4 +30,8 @@ class NumericPadCubit extends Cubit<NumericPadState> {
 
     emit(NumericPadState(value: newValue));
   }
+
+  void keyboardInitialized() {
+    emit(NumericPadState(value: '0'));
+  }
 }

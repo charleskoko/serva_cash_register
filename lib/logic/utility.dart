@@ -1,3 +1,4 @@
+import 'package:serva_cash_register/data/models/list_item.dart';
 import 'package:serva_cash_register/data/models/product.dart';
 
 List<double> money = [50, 100, 200, 500, 1000, 2000, 5000, 10000];
@@ -54,5 +55,27 @@ class Utility {
     }
 
     return change;
+  }
+
+  static bill(List<Map<String, dynamic>> listing,
+      Map<String, dynamic> paymentMethodInfo) {
+    List<ListItem> items = [];
+    HeadingItem article = HeadingItem('articles');
+    HeadingItem total = HeadingItem('Total');
+    items.add(article);
+    for (Map<String, dynamic> element in listing) {
+      items.add(ArticleItem(element));
+    }
+    items.add(total);
+    double sum = grossTotal(totalNet(listing));
+    TotalItem totalItem = TotalItem(sum);
+    items.add(totalItem);
+    HeadingItem paymentMethod = HeadingItem('mode de paiement');
+    items.add(paymentMethod);
+    PaymentMethodItem paymentMethodItem =
+        PaymentMethodItem(paymentMethodInfo, grossTotal(totalNet(listing)));
+    items.add(paymentMethodItem);
+
+    return items;
   }
 }

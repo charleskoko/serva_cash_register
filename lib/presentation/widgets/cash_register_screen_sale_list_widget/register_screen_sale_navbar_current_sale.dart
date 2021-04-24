@@ -9,7 +9,7 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: EdgeInsets.all(10),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: Colors.grey.shade100,
@@ -19,29 +19,36 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
       ),
       // container entete du coté avec la liste des produits.
       child: Container(
-        padding: EdgeInsets.all(8),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             BlocBuilder<ListingCubit, ListingState>(builder: (context, state) {
               if (state.listing.length == 0) {
-                return Icon(
-                  FontAwesomeIcons.trashAlt,
-                  color: Colors.grey.shade300,
+                return Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Icon(
+                    FontAwesomeIcons.trashAlt,
+                    color: Colors.grey.shade300,
+                    size: 20,
+                  ),
                 );
               } else {
                 return InkWell(
-                  onTap: (){
-                    BlocProvider.of<ListingCubit>(context)
-                        .deleteList();
+                  onTap: () {
+                    BlocProvider.of<ListingCubit>(context).deleteList();
                   },
-                  child: Icon(
-                    FontAwesomeIcons.trashAlt,
-                    color: Colors.blue.shade300,
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Icon(
+                      FontAwesomeIcons.trashAlt,
+                      color: Colors.blue.shade300,
+                      size: 20,
+                    ),
                   ),
                 );
               }
             }),
+            SizedBox(width: 20),
             BlocBuilder<ListingCubit, ListingState>(builder: (context, state) {
               if (state.listing.length == 0) {
                 return Text(
@@ -49,7 +56,6 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.blueAccent,
                       fontFamily: 'SourceSansPro',
-                      fontWeight: FontWeight.bold,
                       fontSize: 20),
                 );
               } else {
@@ -58,15 +64,10 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.blueAccent,
                       fontFamily: 'SourceSansPro',
-                      fontWeight: FontWeight.bold,
                       fontSize: 20),
                 );
               }
             }),
-            Icon(
-              FontAwesomeIcons.percent,
-              color: Colors.grey.shade300,
-            ),
           ],
         ),
       ),

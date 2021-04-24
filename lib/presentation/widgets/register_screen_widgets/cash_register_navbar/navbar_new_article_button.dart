@@ -9,7 +9,7 @@ class NavbarNewArticleButton extends StatelessWidget {
         print('passer à la caisse avec fond de caisse = 0');
       },
       child: Container(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.only(right: 5),
         child: Text(
           'Créer un article',
           style: TextStyle(

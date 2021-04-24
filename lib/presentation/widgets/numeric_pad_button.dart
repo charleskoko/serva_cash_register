@@ -23,7 +23,7 @@ class NumericPadKey extends StatelessWidget {
               value.toString(),
               style: TextStyle(
                   fontFamily: 'SourceSansPro',
-                  fontSize: 30,
+                  fontSize: 25,
                   color: (value == 0) ? Colors.grey.shade400 : Colors.black),
             )
           : Icon(FontAwesomeIcons.longArrowAltLeft),

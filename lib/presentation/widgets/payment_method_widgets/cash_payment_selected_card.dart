@@ -5,7 +5,7 @@ class CashPaymentSelectedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.grey.shade200,
         border: Border(
@@ -19,7 +19,7 @@ class CashPaymentSelectedCard extends StatelessWidget {
         'Cash'.toUpperCase(),
         style: TextStyle(
             fontFamily: 'SourceSansPro',
-            fontSize: 25,
+            fontSize: 20,
             //color: Colors.grey.shade200,
             fontWeight: FontWeight.bold),
       ),

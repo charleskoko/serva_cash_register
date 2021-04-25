@@ -11,7 +11,7 @@ class CashRegisterCubit extends Cubit<CashRegisterState> {
 
   Future<void> getArticle() async {
     emit(ProductLoading());
-    final List<Product> products = await _productRepository.fetchProduct();
+    final List<Product> products = [];
     emit(ProductLoaded(products));
   }
 }

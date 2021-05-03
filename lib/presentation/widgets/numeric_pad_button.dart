@@ -24,7 +24,7 @@ class NumericPadKey extends StatelessWidget {
               style: TextStyle(
                   fontFamily: 'SourceSansPro',
                   fontSize: 25,
-                  color: (value == 0) ? Colors.grey.shade400 : Colors.black),
+                  color: Colors.black),
             )
           : Icon(FontAwesomeIcons.longArrowAltLeft),
     );

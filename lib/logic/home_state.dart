@@ -12,14 +12,14 @@ class HomeLoaded extends HomeState {
   HomeLoaded(this.user);
 }
 
-class HomeSettingSelected extends HomeState {}
+class HomeSettingSelected extends HomeState {
+  final User user;
+  HomeSettingSelected(this.user);
+}
 
 class HomeInitialBalanceSelected extends HomeState {
   final User user;
   HomeInitialBalanceSelected(this.user);
 }
 
-class HomeCashRegisterSelected extends HomeState {
-  final User user;
-  HomeCashRegisterSelected(this.user);
-}
+class HomeCashRegisterSelected extends HomeState {}

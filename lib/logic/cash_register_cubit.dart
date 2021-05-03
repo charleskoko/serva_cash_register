@@ -1,17 +1,34 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:serva_cash_register/data/models/product.dart';
-import 'package:serva_cash_register/data/repositories/product_repository.dart';
+import 'package:serva_cash_register/data/models/article.dart';
+import 'package:serva_cash_register/data/repositories/article_repository.dart';
 
 part 'cash_register_state.dart';
 
 class CashRegisterCubit extends Cubit<CashRegisterState> {
-  final ProductRepository _productRepository;
-  CashRegisterCubit(this._productRepository) : super(CashRegisterInitial());
+  final ArticleRepository _articleRepository;
+  CashRegisterCubit(this._articleRepository) : super(CashRegisterInitial()) {
+    getArticle();
+  }
 
   Future<void> getArticle() async {
     emit(ProductLoading());
-    final List<Product> products = [];
-    emit(ProductLoaded(products));
+    final List<Article> articles = await _articleRepository.getArticles();
+    emit(ProductLoaded(articles));
+  }
+
+  void articleFilter(List<Article> articles, String text) async {
+    List<Article> filteredArticles;
+    if (text.isNotEmpty) {
+      print('search');
+      filteredArticles = articles
+          .where((element) =>
+              element.label.toLowerCase().contains(text.toLowerCase()))
+          .toList();
+      emit(ProductLoaded(filteredArticles));
+    } else {
+      final List<Article> articles = await _articleRepository.getArticles();
+      emit(ProductLoaded(articles));
+    }
   }
 }

@@ -8,9 +8,9 @@ class RegisterScreenEmptySaleList extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Colors.grey.shade100,
+          color: Colors.white,
           border: Border(
-            bottom: BorderSide(color: Colors.grey, width: 0.6),
+            bottom: BorderSide(color: Colors.white, width: 1),
           ),
         ),
         width: MediaQuery.of(context).size.width,
@@ -20,19 +20,22 @@ class RegisterScreenEmptySaleList extends StatelessWidget {
           children: [
             Text(
               'Enregistrer une vente',
-              style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
+              style: TextStyle(fontSize: 25, fontFamily: 'SourceSansPro'),
             ),
             SizedBox(height: 5),
             Text(
               'Ajouter des articles à votre vente actuelle',
               textAlign: TextAlign.center,
-              style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 15),
+              style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 25),
             ),
             SizedBox(height: 5),
             TextButton(
-              child: Text(
-                'Afficher les ventes en attentes',
-                style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Afficher les ventes en attentes',
+                  style: TextStyle(fontSize: 20, fontFamily: 'SourceSansPro'),
+                ),
               ),
               style: TextButton.styleFrom(
                 primary: Colors.white,

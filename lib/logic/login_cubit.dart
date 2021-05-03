@@ -22,5 +22,3 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 }
-//henriBasket@gmail.com,
-//yc12345678!

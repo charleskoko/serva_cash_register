@@ -1,8 +1,8 @@
-import 'package:serva_cash_register/data/models/product.dart';
+import 'package:serva_cash_register/data/models/article.dart';
 
 class ListingRepository {
   List<Map<String, dynamic>> addArticleToListing(
-      Product product, List<Map<String, dynamic>> listing,
+      Article product, List<Map<String, dynamic>> listing,
       {String quantity}) {
     Map<String, dynamic> newArticle;
 
@@ -32,7 +32,7 @@ class ListingRepository {
   }
 
   List<Map<String, dynamic>> removeArticleToListing(
-      Product product, List<Map<String, dynamic>> listing) {
+      Article product, List<Map<String, dynamic>> listing) {
     listing.removeWhere((item) => item['product'] == product);
 
     return listing;

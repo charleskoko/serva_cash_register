@@ -14,7 +14,7 @@ class ProductLoading extends CashRegisterState {
 }
 
 class ProductLoaded extends CashRegisterState {
-  final List<Product> products;
+  final List<Article> products;
   const ProductLoaded(this.products);
 }
 

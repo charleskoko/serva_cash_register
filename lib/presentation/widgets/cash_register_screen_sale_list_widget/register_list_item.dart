@@ -41,38 +41,38 @@ class RegisterListItem extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(16.0)),
                             content: Container(
                               width: 500,
-                              height: 150,
+                              height: 200,
                               child: Column(
                                 children: [
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     width: MediaQuery.of(context).size.width,
                                     decoration: BoxDecoration(
-                                        border: Border(
-                                            bottom: BorderSide(
-                                                color: Colors.grey.shade300))),
+                                      border: Border(
+                                        bottom: BorderSide(color: Colors.grey),
+                                      ),
+                                    ),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          'Attention'.toUpperCase(),
+                                          'attention'.toUpperCase(),
                                           style: TextStyle(
-                                              fontSize: 15,
-                                              fontFamily: 'SourceSansPro',
-                                              fontWeight: FontWeight.bold),
+                                              fontSize: 25,
+                                              fontFamily: 'SourceSansPro'),
                                         )
                                       ],
                                     ),
                                   ),
                                   SizedBox(height: 10),
                                   Container(
-                                    padding: EdgeInsets.all(8),
-                                    alignment: Alignment.center,
+                                    width: MediaQuery.of(context).size.width,
+                                    padding: EdgeInsets.all(10),
                                     child: Text(
                                       'Voulez-vous vraiment supprimer cette article de la liste en cours?',
                                       style: TextStyle(
-                                        fontSize: 15,
+                                        fontSize: 20,
                                         fontFamily: 'SourceSansPro',
                                       ),
                                     ),
@@ -85,7 +85,16 @@ class RegisterListItem extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         TextButton(
-                                          child: Text('Non'),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'Annuler',
+                                              style: TextStyle(
+                                                  fontFamily: 'SourceSansPro',
+                                                  fontSize: 18,
+                                                  color: Colors.blue),
+                                            ),
+                                          ),
                                           style: TextButton.styleFrom(
                                             primary: Colors.green.shade300,
                                           ),
@@ -95,17 +104,19 @@ class RegisterListItem extends StatelessWidget {
                                         ),
                                         SizedBox(width: 20),
                                         TextButton(
-                                          child: Text(
-                                            'Oui',
-                                            style: TextStyle(
-                                              fontFamily: 'SourceSansPro',
-                                              fontSize: 15,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              'Effacer',
+                                              style: TextStyle(
+                                                fontFamily: 'SourceSansPro',
+                                                fontSize: 18,
+                                              ),
                                             ),
                                           ),
                                           style: TextButton.styleFrom(
                                             primary: Colors.white,
-                                            backgroundColor:
-                                                Colors.red.shade300,
+                                            backgroundColor: Colors.blue,
                                             onSurface: Colors.grey,
                                           ),
                                           onPressed: () {
@@ -126,7 +137,7 @@ class RegisterListItem extends StatelessWidget {
                         ),
                       );
                     },
-                    transitionDuration: Duration(milliseconds: 200),
+                    transitionDuration: Duration(milliseconds: 500),
                     barrierDismissible: true,
                     barrierLabel: '',
                     context: context,
@@ -138,10 +149,10 @@ class RegisterListItem extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(color: Colors.grey.shade300),
+                bottom: BorderSide(color: Colors.grey, width: 1),
               ),
             ),
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -150,9 +161,11 @@ class RegisterListItem extends StatelessWidget {
                   children: [
                     Container(
                       child: Text(
-                        '00017',
+                        listing[index]['product'].number.toString(),
                         style: TextStyle(
-                            fontFamily: 'SourceSansPro', fontSize: 15),
+                          fontFamily: 'SourceSansPro',
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                     Container(
@@ -162,7 +175,9 @@ class RegisterListItem extends StatelessWidget {
                             listing[index]['product'].price.toString() +
                             ' XOF',
                         style: TextStyle(
-                            fontSize: 15, fontFamily: 'SourceSansPro'),
+                          fontSize: 20,
+                          fontFamily: 'SourceSansPro',
+                        ),
                       ),
                     ),
                   ],
@@ -172,13 +187,15 @@ class RegisterListItem extends StatelessWidget {
                   children: [
                     Text(
                       listing[index]['product'].label,
-                      style:
-                          TextStyle(fontFamily: 'SourceSansPro', fontSize: 17),
+                      style: TextStyle(
+                        fontFamily: 'SourceSansPro',
+                        fontSize: 20,
+                      ),
                     ),
                     Text(
                       listing[index]['total'].toString() + ' XOF',
                       style: TextStyle(
-                          fontSize: 17,
+                          fontSize: 20,
                           fontFamily: 'SourceSansPro',
                           fontWeight: FontWeight.bold),
                     ),

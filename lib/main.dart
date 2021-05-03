@@ -1,53 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:serva_cash_register/data/repositories/company_repository.dart';
 import 'package:serva_cash_register/data/repositories/home_repository.dart';
 import 'package:serva_cash_register/data/repositories/listing_repository.dart';
-import 'package:serva_cash_register/data/repositories/product_repository.dart';
+import 'package:serva_cash_register/data/repositories/article_repository.dart';
 import 'package:serva_cash_register/data/services/locator_service.dart';
 import 'package:serva_cash_register/logic/auth_cubit.dart';
-import 'package:serva_cash_register/logic/cash_fund_cubit.dart';
+import 'package:serva_cash_register/logic/initial_balance_cubit.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
+import 'package:serva_cash_register/logic/company_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/login_cubit.dart';
 import 'package:serva_cash_register/logic/numeric_pad_cubit.dart';
 import 'package:serva_cash_register/logic/payment_completed_cubit.dart';
 import 'package:serva_cash_register/logic/payment_method_cubit.dart';
+import 'package:serva_cash_register/logic/settings_cubit.dart';
 import 'package:serva_cash_register/presentation/router/app_router.dart';
 
 import 'data/repositories/auth_repository.dart';
 import 'data/repositories/login_repository.dart';
+import 'data/repositories/setting_repository.dart';
+import 'logic/article_cubit.dart';
 import 'logic/home_cubit.dart';
 
 void main() {
   setupServiceLocator();
-  runApp(MyApp(
-    appRouter: AppRouter(),
-    productRepository: ProductRepository(),
-    listingRepository: ListingRepository(),
-    authRepository: AuthRepository(),
-    loginRepository: LoginRepository(),
-    homeRepository: HomeRepository(),
-  ));
+  runApp(
+    MyApp(
+      appRouter: AppRouter(),
+      listingRepository: ListingRepository(),
+      authRepository: AuthRepository(),
+      loginRepository: LoginRepository(),
+      homeRepository: HomeRepository(),
+      companyRepository: CompanyRepository(),
+      settingRepository: SettingRepository(),
+      articleRepository: ArticleRepository(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
   final AppRouter appRouter;
-  final ProductRepository productRepository;
+  final ArticleRepository articleRepository;
   final ListingRepository listingRepository;
   final AuthRepository authRepository;
   final LoginRepository loginRepository;
   final HomeRepository homeRepository;
+  final CompanyRepository companyRepository;
+  final SettingRepository settingRepository;
 
-  const MyApp(
-      {Key key,
-      @required this.appRouter,
-      @required this.productRepository,
-      @required this.authRepository,
-      @required this.loginRepository,
-      @required this.homeRepository,
-      this.listingRepository})
-      : super(key: key);
+  const MyApp({
+    Key key,
+    @required this.appRouter,
+    @required this.articleRepository,
+    @required this.companyRepository,
+    @required this.authRepository,
+    @required this.loginRepository,
+    @required this.homeRepository,
+    @required this.settingRepository,
+    this.listingRepository,
+  }) : super(key: key);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -63,14 +76,23 @@ class MyApp extends StatelessWidget {
         BlocProvider<LoginCubit>(
           create: (context) => LoginCubit(loginRepository),
         ),
+        BlocProvider<ArticleCubit>(
+          create: (context) => ArticleCubit(articleRepository),
+        ),
+        BlocProvider<CompanyCubit>(
+          create: (context) => CompanyCubit(companyRepository),
+        ),
         BlocProvider<HomeCubit>(
           create: (context) => HomeCubit(homeRepository),
         ),
-        BlocProvider<CashFundCubit>(
-          create: (context) => CashFundCubit(),
+        BlocProvider<SettingsCubit>(
+          create: (context) => SettingsCubit(settingRepository),
+        ),
+        BlocProvider<InitialBalanceCubit>(
+          create: (context) => InitialBalanceCubit(),
         ),
         BlocProvider<CashRegisterCubit>(
-          create: (context) => CashRegisterCubit(productRepository),
+          create: (context) => CashRegisterCubit(articleRepository),
         ),
         BlocProvider<ListingCubit>(
           create: (context) => ListingCubit(listingRepository),

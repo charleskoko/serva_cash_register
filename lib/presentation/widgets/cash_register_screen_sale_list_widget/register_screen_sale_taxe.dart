@@ -5,22 +5,23 @@ class RegisterScreenSaleTax extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top:5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             'TVA',
             style: TextStyle(
-                fontSize: 15,
+                fontSize: 20,
                 fontFamily: 'SourceSansPro',
-                color: Colors.grey.shade500),
+                color: Colors.grey),
           ),
           Text(
             '18%',
             style: TextStyle(
                 fontFamily: 'SourceSansPro',
-                fontSize: 15,
-                color: Colors.grey.shade500),
+                fontSize: 20,
+                color: Colors.grey),
           )
         ],
       ),

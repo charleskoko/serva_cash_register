@@ -1,5 +1,6 @@
+import 'package:serva_cash_register/data/models/company.dart';
 import 'package:serva_cash_register/data/models/list_item.dart';
-import 'package:serva_cash_register/data/models/product.dart';
+import 'package:serva_cash_register/data/models/article.dart';
 
 List<double> money = [50, 100, 200, 500, 1000, 2000, 5000, 10000];
 
@@ -22,7 +23,7 @@ class Utility {
     return sum;
   }
 
-  static selectedArticle(Product product, List<Map<String, dynamic>> listing) {
+  static selectedArticle(Article product, List<Map<String, dynamic>> listing) {
     int sum = 0;
     for (Map<String, dynamic> item in listing) {
       if (product == item['product']) {
@@ -31,6 +32,15 @@ class Utility {
     }
 
     return sum;
+  }
+
+  static selectedCompany(Company company, Company selectedCompany) {
+    bool isSelected = false;
+    if (selectedCompany != null && company == selectedCompany) {
+      isSelected = true;
+    }
+
+    return isSelected;
   }
 
   static checkCash(String cash, double total) {

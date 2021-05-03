@@ -12,19 +12,21 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   void home() async {
-    emit(HomeLoading());
     final User user = await _homeRepository.getAuthUSer();
-    //print('user: $user');
     emit(HomeLoaded(user));
   }
 
-  void settings() {
-    emit(HomeSettingSelected());
+  void settings() async {
+    final User user = await _homeRepository.getAuthUSer();
+    emit(HomeSettingSelected(user));
   }
 
   void initialBalance() async {
-    emit(HomeLoading());
     final User user = await _homeRepository.getAuthUSer();
     emit(HomeInitialBalanceSelected(user));
+  }
+
+  void cashRegisterScreen() {
+    emit(HomeCashRegisterSelected());
   }
 }

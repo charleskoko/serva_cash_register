@@ -9,36 +9,39 @@ class RegisterScreenSubmitButton extends StatelessWidget {
   const RegisterScreenSubmitButton({this.grossTotal});
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      child: Padding(
-        padding: const EdgeInsets.all(2),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Somme',
-              style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
-            ),
-            Text(
-              grossTotal. toStringAsFixed(2)+' XOF',
-              style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
-            )
-          ],
+    return Container(
+      padding: EdgeInsets.only(top: 5),
+      child: TextButton(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Somme',
+                style: TextStyle(fontSize: 25, fontFamily: 'SourceSansPro'),
+              ),
+              Text(
+                grossTotal.toStringAsFixed(2) + ' XOF',
+                style: TextStyle(fontSize: 25, fontFamily: 'SourceSansPro'),
+              )
+            ],
+          ),
         ),
+        style: TextButton.styleFrom(
+          elevation: 0,
+          primary: Colors.white,
+          backgroundColor:
+              (grossTotal == 0) ? Colors.blue.shade100 : Colors.blue,
+          onSurface: Colors.grey,
+        ),
+        onPressed: () {
+          if (grossTotal != 0) {
+            Navigator.of(context).pushNamed('/paymentMethod');
+            BlocProvider.of<PaymentMethodCubit>(context).cashSelected();
+          }
+        },
       ),
-      style: TextButton.styleFrom(
-        elevation: 0,
-        primary: Colors.white,
-        backgroundColor: (grossTotal == 0)?Colors.blue.shade100 : Colors.blue,
-        onSurface: Colors.grey,
-      ),
-      onPressed: () {
-        if(grossTotal != 0){
-          Navigator.of(context)
-              .pushNamed('/paymentMethod');
-          BlocProvider.of<PaymentMethodCubit>(context).cashSelected();
-        }
-      },
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/payment_method_cubit.dart';
 import 'package:serva_cash_register/logic/utility.dart';
@@ -19,20 +20,25 @@ class PaymentMethodScreen extends StatelessWidget {
           child: Column(
             children: [
               Container(
+                height: 80,
+                padding: EdgeInsets.all(12.5),
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade300,
+                  border: Border(
+                    bottom: BorderSide(color: Colors.white, width: 1),
+                    right: BorderSide(color: Colors.white, width: 1),
+                  ),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
+                      width: 80,
                       child: TextButton(
-                        child: Text(
-                          'Retour',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'SourceSansPro',
-                              fontWeight: FontWeight.bold),
-                        ),
-                        style: TextButton.styleFrom(
-                          primary: Colors.blue,
+                        child: Icon(
+                          FontAwesomeIcons.arrowCircleLeft,
+                          size: 40,
+                          color: Colors.grey.shade800,
                         ),
                         onPressed: () {
                           Navigator.of(context).pop();

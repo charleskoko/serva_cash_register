@@ -18,7 +18,7 @@ class OtherPaymentNotSelectedCard extends StatelessWidget {
         'Autres'.toUpperCase(),
         style: TextStyle(
           fontFamily: 'SourceSansPro',
-          fontSize: 20,
+          fontSize: 25,
           color: Colors.grey.shade300,
         ),
       ),

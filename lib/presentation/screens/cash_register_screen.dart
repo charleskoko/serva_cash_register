@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:serva_cash_register/logic/article_cubit.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/utility.dart';
@@ -40,16 +41,15 @@ class CashRegisterScreen extends StatelessWidget {
                         Expanded(
                           child: Container(
                             width: MediaQuery.of(context).size.width,
-                            child: BlocBuilder<CashRegisterCubit,
-                                CashRegisterState>(
+                            child: BlocBuilder<ArticleCubit, ArticleState>(
                               builder: (context, state) {
                                 if (state is CashRegisterInitial) {
                                   return Container();
-                                } else if (state is ProductLoading) {
+                                } else if (state is ArticleLoading) {
                                   return LoadingArticles();
-                                } else if (state is ProductLoaded) {
+                                } else if (state is ArticleLoaded) {
                                   return ArticleList(
-                                    products: state.products,
+                                    products: state.articles,
                                   );
                                 } else {
                                   return Container(
@@ -65,9 +65,6 @@ class CashRegisterScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Container(
-                      width: MediaQuery.of(context).size.width -
-                          MediaQuery.of(context).size.width / 1.4,
-                      height: MediaQuery.of(context).size.height,
                       color: Colors.white,
                       child: Column(
                         children: [
@@ -78,11 +75,9 @@ class CashRegisterScreen extends StatelessWidget {
                           //summe et bouton pour valider
                           BlocBuilder<ListingCubit, ListingState>(
                             builder: (context, state) {
-                              if (state.listing.length == 0) {
-                                return RegisterScreenEmptySaleList();
-                              } else {
-                                return RegisterListItem(listing: state.listing);
-                              }
+                              return (state.listing.length == 0)
+                                  ? RegisterScreenEmptySaleList()
+                                  : RegisterListItem(listing: state.listing);
                             },
                           ),
                           Container(

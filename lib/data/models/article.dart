@@ -20,6 +20,15 @@ class Article extends Equatable {
     this.category = Category.fromJson(json['category']);
   }
 
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'label': label,
+    'description': description,
+    'number': number,
+    'price': price,
+    'category': category.toJson()
+  };
+
   @override
   List<Object> get props =>
       [id, label, description, imageUrl, number, price, category];

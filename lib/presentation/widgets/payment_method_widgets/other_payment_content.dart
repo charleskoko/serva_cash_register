@@ -31,7 +31,7 @@ class OtherPaymentContent extends StatelessWidget {
                         Text(
                           'Mobile money',
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 25,
                               fontFamily: 'SourceSansPro',
                               fontWeight: FontWeight.bold),
                         )
@@ -60,7 +60,7 @@ class OtherPaymentContent extends StatelessWidget {
                     child: Text(
                       'Orange money',
                       style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 25,
                         fontFamily: 'SourceSansPro',
                       ),
                     ),
@@ -86,7 +86,7 @@ class OtherPaymentContent extends StatelessWidget {
                     child: Text(
                       'MTN Mobile money',
                       style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 25,
                         fontFamily: 'SourceSansPro',
                       ),
                     ),
@@ -109,7 +109,7 @@ class OtherPaymentContent extends StatelessWidget {
                     child: Text(
                       'Moov Flooz',
                       style: TextStyle(
-                        fontSize: 17,
+                        fontSize: 25,
                         fontFamily: 'SourceSansPro',
                       ),
                     ),

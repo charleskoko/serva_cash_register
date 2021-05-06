@@ -9,7 +9,7 @@ class OtherPaymentSelectedCard extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.grey.shade200,
           border: Border(
-            top: BorderSide(color: Colors.grey.shade200),
+            top: BorderSide(color: Colors.grey.shade400),
             bottom: BorderSide(color: Colors.grey.shade400),
             left: BorderSide(color: Colors.grey.shade400),
             right: BorderSide(color: Colors.grey.shade200),
@@ -19,7 +19,7 @@ class OtherPaymentSelectedCard extends StatelessWidget {
         'Autres'.toUpperCase(),
         style: TextStyle(
             fontFamily: 'SourceSansPro',
-            fontSize: 20,
+            fontSize: 25,
             color: Colors.black,
             fontWeight: FontWeight.bold),
       ),

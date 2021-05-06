@@ -11,6 +11,12 @@ class Category extends Equatable {
     this.description = json['description'];
   }
 
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'description': description,
+      };
+
   @override
   List<Object> get props => [id, name, description];
 }

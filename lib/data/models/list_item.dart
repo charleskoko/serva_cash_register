@@ -147,7 +147,7 @@ class ArticleItem implements ListItem {
                                 fontSize: 15, fontFamily: 'SourceSansPro'),
                           ),
                           Text(
-                            article['product'].price.toString(),
+                            article['price'].toString(),
                             style: TextStyle(
                                 fontFamily: 'SourceSansPro', fontSize: 15),
                           ),

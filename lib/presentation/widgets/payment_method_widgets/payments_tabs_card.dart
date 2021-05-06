@@ -18,11 +18,9 @@ class PaymentsTabsCard extends StatelessWidget {
         children: [
           InkWell(
             onTap: () {
-              BlocProvider.of<PaymentMethodCubit>(context)
-                  .cashSelected();
+              BlocProvider.of<PaymentMethodCubit>(context).cashSelected();
             },
-            child:
-            BlocBuilder<PaymentMethodCubit, PaymentMethodState>(
+            child: BlocBuilder<PaymentMethodCubit, PaymentMethodState>(
               builder: (context, state) {
                 if (state is PaymentMethodInitial) {
                   return Container();
@@ -36,20 +34,18 @@ class PaymentsTabsCard extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              BlocProvider.of<PaymentMethodCubit>(context)
-                  .otherSelected();
+              BlocProvider.of<PaymentMethodCubit>(context).otherSelected();
             },
-            child:
-            BlocBuilder<PaymentMethodCubit, PaymentMethodState>(
+            child: BlocBuilder<PaymentMethodCubit, PaymentMethodState>(
                 builder: (context, state) {
-                  if (state is PaymentMethodInitial) {
-                    return Container();
-                  } else if (state is CashSelected) {
-                    return OtherPaymentNotSelectedCard();
-                  } else {
-                    return  OtherPaymentSelectedCard();
-                  }
-                }),
+              if (state is PaymentMethodInitial) {
+                return Container();
+              } else if (state is CashSelected) {
+                return OtherPaymentNotSelectedCard();
+              } else {
+                return OtherPaymentSelectedCard();
+              }
+            }),
           ),
         ],
       ),

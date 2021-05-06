@@ -29,9 +29,13 @@ class ArticleCubit extends Cubit<ArticleState> {
   }
 
   void articleFilter(List<Article> articles, String text) {
+    emit(ArticleLoading());
     List<Article> filteredArticles;
     if (text.isNotEmpty) {
-      filteredArticles = [];
+      filteredArticles = articles
+          .where((element) =>
+              (element.label.toLowerCase().contains(text.toLowerCase())))
+          .toList();
       emit(ArticleLoaded(filteredArticles));
     } else {
       emit(ArticleLoaded(articles));

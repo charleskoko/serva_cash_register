@@ -137,9 +137,12 @@ class PaymentCompletedScreen extends StatelessWidget {
                                   onSurface: Colors.grey,
                                 ),
                                 onPressed: () {
-                                  Navigator.pushNamedAndRemoveUntil(context, '/register', (route) => false);
-                                  BlocProvider.of<ListingCubit>(context).deleteList();
-                                  BlocProvider.of<NumericPadCubit>(context).keyboardInitialized();
+                                  Navigator.pushNamedAndRemoveUntil(
+                                      context, '/register', (route) => false);
+                                  BlocProvider.of<ListingCubit>(context)
+                                      .deleteList();
+                                  BlocProvider.of<NumericPadCubit>(context)
+                                      .keyboardInitialized();
                                 },
                               ),
                             )

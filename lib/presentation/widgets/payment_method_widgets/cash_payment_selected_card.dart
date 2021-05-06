@@ -19,7 +19,7 @@ class CashPaymentSelectedCard extends StatelessWidget {
         'Cash'.toUpperCase(),
         style: TextStyle(
             fontFamily: 'SourceSansPro',
-            fontSize: 20,
+            fontSize: 25,
             //color: Colors.grey.shade200,
             fontWeight: FontWeight.bold),
       ),

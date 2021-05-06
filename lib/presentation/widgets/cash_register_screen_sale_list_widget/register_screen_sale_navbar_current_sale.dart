@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:serva_cash_register/data/models/order_item.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 
@@ -193,21 +194,31 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                   ),
                 );
               } else {
-                return Container(
-                  padding: EdgeInsets.all(15),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.green.shade700,
-                  ),
-                  child: Text(
-                    'Enregistrer la vente',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'SourceSansPro',
-                      fontSize: 20,
+                return ElevatedButton(
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Enregistrer la vente',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'SourceSansPro',
+                        fontSize: 20,
+                      ),
                     ),
                   ),
+                  onPressed: () {
+                    List<OrderItem> orderITems = [];
+                    for (Map<String, dynamic> element in state.listing) {
+                      OrderItem orderItem = OrderItem(
+                          element['product'].id,
+                          element['product'],
+                          element['price'],
+                          element['quantity']);
+                      orderITems.add(orderItem);
+                    }
+                    print(orderITems);
+                  },
                 );
               }
             }),

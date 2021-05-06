@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
+import 'package:serva_cash_register/presentation/widgets/price_pop_up.dart';
 
 class RegisterListItem extends StatelessWidget {
   final List<Map<String, dynamic>> listing;
@@ -146,62 +147,86 @@ class RegisterListItem extends StatelessWidget {
               },
             )
           ],
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: Colors.grey, width: 1),
-              ),
-            ),
-            padding: EdgeInsets.all(15),
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: Text(
-                        listing[index]['product'].number.toString(),
-                        style: TextStyle(
-                          fontFamily: 'SourceSansPro',
-                          fontSize: 20,
-                        ),
+          child: InkWell(
+            onTap: () {
+              showGeneralDialog(
+                  barrierColor: Colors.black.withOpacity(0.5),
+                  transitionBuilder: (context, a1, a2, widget) {
+                    final curvedValue =
+                        Curves.easeInOutBack.transform(a1.value) - 1.0;
+                    return Transform(
+                      transform: Matrix4.translationValues(
+                          0.0, curvedValue * 200, 0.0),
+                      child: Opacity(
+                        opacity: a1.value,
+                        child: PriceEntryPopUp(curvedValue, a1, listing[index]),
                       ),
-                    ),
-                    Container(
-                      child: Text(
-                        listing[index]['quantity'].toString() +
-                            'x ' +
-                            listing[index]['product'].price.toString() +
-                            ' XOF',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontFamily: 'SourceSansPro',
-                        ),
-                      ),
-                    ),
-                  ],
+                    );
+                  },
+                  transitionDuration: Duration(milliseconds: 200),
+                  barrierDismissible: true,
+                  barrierLabel: '',
+                  context: context,
+                  // ignore: missing_return
+                  pageBuilder: (context, animation1, animation2) {});
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey, width: 1),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      listing[index]['product'].label,
-                      style: TextStyle(
-                        fontFamily: 'SourceSansPro',
-                        fontSize: 20,
+              ),
+              padding: EdgeInsets.all(15),
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        child: Text(
+                          listing[index]['product'].number.toString(),
+                          style: TextStyle(
+                            fontFamily: 'SourceSansPro',
+                            fontSize: 20,
+                          ),
+                        ),
                       ),
-                    ),
-                    Text(
-                      listing[index]['total'].toString() + ' XOF',
-                      style: TextStyle(
-                          fontSize: 20,
+                      Container(
+                        child: Text(
+                          listing[index]['quantity'].toString() +
+                              'x ' +
+                              listing[index]['price'].toString() +
+                              ' XOF',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'SourceSansPro',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        listing[index]['product'].label,
+                        style: TextStyle(
                           fontFamily: 'SourceSansPro',
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                )
-              ],
+                          fontSize: 20,
+                        ),
+                      ),
+                      Text(
+                        listing[index]['total'].toString() + ' XOF',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'SourceSansPro',
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

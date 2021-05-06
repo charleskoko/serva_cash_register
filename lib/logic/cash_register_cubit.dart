@@ -17,18 +17,4 @@ class CashRegisterCubit extends Cubit<CashRegisterState> {
     emit(ProductLoaded(articles));
   }
 
-  void articleFilter(List<Article> articles, String text) async {
-    List<Article> filteredArticles;
-    if (text.isNotEmpty) {
-      print('search');
-      filteredArticles = articles
-          .where((element) =>
-              element.label.toLowerCase().contains(text.toLowerCase()))
-          .toList();
-      emit(ProductLoaded(filteredArticles));
-    } else {
-      final List<Article> articles = await _articleRepository.getArticles();
-      emit(ProductLoaded(articles));
-    }
-  }
 }

@@ -2,7 +2,6 @@ import 'package:serva_cash_register/data/models/company.dart';
 import 'package:serva_cash_register/data/models/list_item.dart';
 import 'package:serva_cash_register/data/models/article.dart';
 
-List<double> money = [50, 100, 200, 500, 1000, 2000, 5000, 10000];
 
 class Utility {
   static totalNet(List<Map<String, dynamic>> listing) {

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:serva_cash_register/logic/listing_cubit.dart';
+import 'package:serva_cash_register/logic/local_order_item_cubit.dart';
 import 'package:serva_cash_register/logic/numeric_pad_cubit.dart';
 import 'package:serva_cash_register/logic/payment_completed_cubit.dart';
 import 'package:serva_cash_register/logic/utility.dart';
@@ -187,6 +189,7 @@ class CashPaymentContent extends StatelessWidget {
                   Navigator.of(context).pushNamed('/paymentCompleted');
                   BlocProvider.of<PaymentCompletedCubit>(context)
                       .paymentCompleted(paymentMethod);
+                  BlocProvider.of<ListingCubit>(context).updatedLocalListing();
                 }
               },
             );

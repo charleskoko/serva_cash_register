@@ -17,19 +17,19 @@ class Article extends Equatable {
     this.number = json['number'];
     this.price = json['price'].toDouble();
     this.description = json['description'];
-    this.category = Category.fromJson(json['category']);
+    //this.category =(json['category'] == null) ? null : Category.fromJson(json['category']);
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'label': label,
-    'description': description,
-    'number': number,
-    'price': price,
-    'category': category.toJson()
-  };
+        'id': id,
+        'label': label,
+        'description': description,
+        'number': number,
+        'price': price,
+        //'categoryId': (category != null) ? category.id : null
+      };
 
   @override
   List<Object> get props =>
-      [id, label, description, imageUrl, number, price, category];
+      [id, label, description, imageUrl, number, price];
 }

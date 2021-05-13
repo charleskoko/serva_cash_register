@@ -1,6 +1,10 @@
+import 'dart:convert';
 import 'package:serva_cash_register/data/models/article.dart';
+import 'package:serva_cash_register/data/models/order_item.dart';
+import 'package:serva_cash_register/data/services/listing_service.dart';
 
 class ListingRepository {
+  ListingService _listingService = ListingService();
   List<Map<String, dynamic>> addArticleToListing(
       Article product, List<Map<String, dynamic>> listing,
       {String quantity, double price, Map<String, dynamic> article}) {
@@ -17,7 +21,8 @@ class ListingRepository {
       }
 
       for (Map<String, dynamic> item in listing) {
-        if (item['product'] == product) {
+        Article currentArticleFromList = item['product'];
+        if (currentArticleFromList == product) {
           count = item['quantity'];
         }
       }
@@ -43,6 +48,33 @@ class ListingRepository {
     return listing;
   }
 
+  Future<String> saveOrderLabel(String label) async {
+    final String labelsString = await _listingService.readOrderLabel();
+    if (label.isEmpty) {
+      return 'isEmpty';
+    } else if (labelsString == null) {
+      List<String> labels = [];
+      labels.add(label);
+      await _listingService.writeOrderLabel(labels);
+      return label;
+    } else {
+      final List<dynamic> labelList = await jsonDecode(labelsString);
+      var result = _listingService.isLabelAlreadyInLabelList(label, labelList);
+
+      if (result == true) {
+        return 'isNotUnique';
+      } else {
+        labelList.add(label);
+        await _listingService.writeOrderLabelFromList(labelList);
+        return label;
+      }
+    }
+  }
+
+  Future<void> saveLocalOrder(listing, label) {
+    _listingService.saveLocalListing(listing, label);
+  }
+
   void localListingStorage() {}
 
   List<Map<String, dynamic>> removeArticleToListing(
@@ -50,5 +82,25 @@ class ListingRepository {
     listing.removeWhere((item) => item['product'] == product);
 
     return listing;
+  }
+
+  Future<List<OrderItem>> selectedLocalListing(orderItemLabel) async {
+    final List<OrderItem> orderItems =
+        await _listingService.selectLocalListing(orderItemLabel);
+
+    return orderItems;
+  }
+
+  Map<String, dynamic> createListingElement(OrderItem element) {
+    return {
+      'product': element.article,
+      'price': element.price,
+      'quantity': element.quantity,
+      'total': element.quantity * element.price
+    };
+  }
+
+  deleteLocalListing(String label) {
+    _listingService.deleteLocalListing(label);
   }
 }

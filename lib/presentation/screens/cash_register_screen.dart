@@ -21,6 +21,7 @@ class CashRegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: BlocConsumer<CashRegisterCubit, CashRegisterState>(
         listener: (context, state) {
           // TODO: implement listener
@@ -86,21 +87,18 @@ class CashRegisterScreen extends StatelessWidget {
                               color: Colors.white,
                             ),
                             width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height / 5,
                             child: Column(
                               children: [
-                                BlocBuilder<ListingCubit, ListingState>(
-                                    builder: (context, state) {
-                                  return RegisterScreenTotalNet(
-                                      totalNet:
-                                          Utility.totalNet(state.listing));
-                                }),
-                                RegisterScreenSaleTax(),
+                                //        BlocBuilder<ListingCubit, ListingState>(
+                                //          builder: (context, state) {
+                                //      return RegisterScreenTotalNet(totalNet:
+                                //            Utility.totalNet(state.listing));
+                                //}),
+                                //RegisterScreenSaleTax(),
                                 BlocBuilder<ListingCubit, ListingState>(
                                     builder: (context, state) {
                                   return RegisterScreenSubmitButton(
-                                    grossTotal: Utility.grossTotal(
-                                        Utility.totalNet(state.listing)),
+                                    grossTotal: Utility.totalNet(state.listing),
                                   );
                                 }),
                               ],

@@ -1,30 +1,36 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 
 import 'article.dart';
-import 'category.dart';
 
 class OrderItem extends Equatable {
-  String productId;
+  int id;
+  String articleId;
   Article article;
+  String name;
   double price;
   int quantity;
 
-  OrderItem(this.productId, this.article, this.price, this.quantity);
+  OrderItem(this.articleId, this.name, this.article, this.price, this.quantity);
 
   OrderItem.fromJson(Map<String, dynamic> json) {
-    this.productId = json['productId'];
-    this.article = Article.fromJson(json['article']);
+    this.articleId = json['productId'];
+    this.name = json['name'];
+    this.id = json['id'];
+    this.article = Article.fromJson(jsonDecode(json['article']));
     this.price = json['price'];
     this.quantity = json['quantity'];
   }
 
   Map<String, dynamic> toJson() => {
-        'productId': productId,
-        'article': article.toJson(),
+        'articleId': articleId,
+        'article': jsonEncode(article.toJson()),
+        'name': name,
         'price': price,
         'quantity': quantity
       };
 
   @override
-  List<Object> get props => [productId, article, price, quantity];
+  List<Object> get props => [id, articleId, name, article, price, quantity];
 }

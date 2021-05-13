@@ -7,13 +7,13 @@ class NavbarEditButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pop();
+        Navigator.of(context).pushNamed('/settings');
       },
       child: Container(
         width: 80,
         padding: EdgeInsets.only(left: 5, top: 10, bottom: 10),
         child: Icon(
-          FontAwesomeIcons.arrowCircleLeft,
+          FontAwesomeIcons.bars,
           size: 40,
           color: Colors.grey.shade800,
         ),

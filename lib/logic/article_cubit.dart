@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:serva_cash_register/data/data_provider/serva_helper.dart';
 import 'package:serva_cash_register/data/models/article.dart';
 import 'package:serva_cash_register/data/repositories/article_repository.dart';
 part 'article_state.dart';
@@ -9,10 +10,14 @@ class ArticleCubit extends Cubit<ArticleState> {
   ArticleCubit(this.articleRepository) : super(ArticleInitial()) {
     getArticles();
   }
+  ServaHelper _servaHelper = ServaHelper();
 
   void getArticles() async {
     emit(ArticleLoading());
     final List<Article> articles = await articleRepository.getArticles();
+    for (Article article in articles) {
+      _servaHelper.insertArticle(article);
+    }
     emit(ArticleLoaded(articles));
   }
 

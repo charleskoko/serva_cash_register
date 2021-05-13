@@ -19,7 +19,6 @@ class ArticleCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ListingCubit, ListingState>(builder: (context, state) {
-      final quantityController = TextEditingController();
       return InkWell(
           onTap: () {
             BlocProvider.of<ListingCubit>(context).addArticleToListing(

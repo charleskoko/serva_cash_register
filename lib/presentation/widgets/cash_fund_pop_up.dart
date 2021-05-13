@@ -25,7 +25,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
     return BlocConsumer<InitialBalanceCubit, InitialBalanceState>(
       listener: (context, state) {
         if (state is InitialBalanceSaved) {
-          Navigator.of(context).pop();
+          Navigator.of(context).popUntil((route) => false);
           Navigator.of(context).pushNamed('/register');
         }
       },

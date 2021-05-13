@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:serva_cash_register/data/data_provider/serva_helper.dart';
 import 'package:serva_cash_register/data/repositories/company_repository.dart';
 import 'package:serva_cash_register/data/repositories/home_repository.dart';
 import 'package:serva_cash_register/data/repositories/listing_repository.dart';
@@ -11,6 +12,7 @@ import 'package:serva_cash_register/logic/initial_balance_cubit.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/company_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
+import 'package:serva_cash_register/logic/local_order_item_cubit.dart';
 import 'package:serva_cash_register/logic/login_cubit.dart';
 import 'package:serva_cash_register/logic/numeric_pad_cubit.dart';
 import 'package:serva_cash_register/logic/payment_completed_cubit.dart';
@@ -40,7 +42,7 @@ void main() {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final AppRouter appRouter;
   final ArticleRepository articleRepository;
   final ListingRepository listingRepository;
@@ -61,7 +63,22 @@ class MyApp extends StatelessWidget {
     @required this.settingRepository,
     this.listingRepository,
   }) : super(key: key);
-  // This widget is the root of your application.
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ServaHelper _servaHelper = ServaHelper();
+
+  @override
+  void initState() {
+    _servaHelper
+        .initializeDatabase()
+        .then((value) => {print('--- database initialized ---')});
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -71,34 +88,37 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthCubit>(
-          create: (context) => AuthCubit(authRepository),
+          create: (context) => AuthCubit(widget.authRepository),
         ),
         BlocProvider<LoginCubit>(
-          create: (context) => LoginCubit(loginRepository),
+          create: (context) => LoginCubit(widget.loginRepository),
         ),
         BlocProvider<ArticleCubit>(
-          create: (context) => ArticleCubit(articleRepository),
+          create: (context) => ArticleCubit(widget.articleRepository),
         ),
         BlocProvider<CompanyCubit>(
-          create: (context) => CompanyCubit(companyRepository),
+          create: (context) => CompanyCubit(widget.companyRepository),
         ),
         BlocProvider<HomeCubit>(
-          create: (context) => HomeCubit(homeRepository),
+          create: (context) => HomeCubit(widget.homeRepository),
         ),
         BlocProvider<SettingsCubit>(
-          create: (context) => SettingsCubit(settingRepository),
+          create: (context) => SettingsCubit(widget.settingRepository),
         ),
         BlocProvider<InitialBalanceCubit>(
           create: (context) => InitialBalanceCubit(),
         ),
         BlocProvider<CashRegisterCubit>(
-          create: (context) => CashRegisterCubit(articleRepository),
+          create: (context) => CashRegisterCubit(widget.articleRepository),
         ),
         BlocProvider<ListingCubit>(
-          create: (context) => ListingCubit(listingRepository),
+          create: (context) => ListingCubit(widget.listingRepository),
         ),
         BlocProvider<PaymentMethodCubit>(
           create: (context) => PaymentMethodCubit(),
+        ),
+        BlocProvider<LocalOrderItemCubit>(
+          create: (context) => LocalOrderItemCubit(),
         ),
         BlocProvider<NumericPadCubit>(
           create: (context) => NumericPadCubit(),
@@ -109,7 +129,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         theme: new ThemeData(scaffoldBackgroundColor: Colors.white),
-        onGenerateRoute: appRouter.onGenerateRoute,
+        onGenerateRoute: widget.appRouter.onGenerateRoute,
       ),
     );
   }

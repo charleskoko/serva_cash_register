@@ -22,7 +22,7 @@ class MultipleEntryPopUp extends StatefulWidget {
 }
 
 class _MultipleEntryPopUpState extends State<MultipleEntryPopUp> {
-  String cashFund;
+  String cashFund = '1';
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class _MultipleEntryPopUpState extends State<MultipleEntryPopUp> {
                     Icon(
                       FontAwesomeIcons.keyboard,
                       size: 40,
-                      color: Colors.green.shade400,
+                      color: Color(0xff973be8),
                     ),
                     SizedBox(
                       width: 15,
@@ -335,7 +335,7 @@ class _MultipleEntryPopUpState extends State<MultipleEntryPopUp> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: 30),
                           TextButton(
                               onPressed: () {
                                 BlocProvider.of<ListingCubit>(context)
@@ -345,14 +345,17 @@ class _MultipleEntryPopUpState extends State<MultipleEntryPopUp> {
                               },
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
-                                backgroundColor: Colors.blue,
+                                backgroundColor: Color(0xff973be8),
                                 onSurface: Colors.grey,
                               ),
-                              child: Text(
-                                'Valider',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'SourceSansPro',
+                              child: Padding(
+                                padding: const EdgeInsets.all(5),
+                                child: Text(
+                                  'Valider',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: 'SourceSansPro',
+                                  ),
                                 ),
                               ))
                         ],

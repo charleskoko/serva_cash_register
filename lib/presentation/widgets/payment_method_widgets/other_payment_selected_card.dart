@@ -5,7 +5,7 @@ class OtherPaymentSelectedCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(5),
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Colors.grey.shade200,
           border: Border(

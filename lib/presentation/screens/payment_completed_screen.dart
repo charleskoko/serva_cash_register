@@ -32,20 +32,6 @@ class PaymentCompletedScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             PaymentCompletedTitle(),
-                            ChangeTitle(),
-                            BlocBuilder<ListingCubit, ListingState>(
-                              builder: (context, listState) {
-                                return BlocBuilder<PaymentCompletedCubit,
-                                    PaymentCompletedState>(
-                                  builder: (context, state) {
-                                    return ChangeValue(
-                                      listing: listState.listing,
-                                      paymentMethod: state.paymentMethod,
-                                    );
-                                  },
-                                );
-                              },
-                            ),
                             BlocBuilder<PaymentCompletedCubit,
                                 PaymentCompletedState>(
                               builder: (context, state) {
@@ -58,11 +44,12 @@ class PaymentCompletedScreen extends StatelessWidget {
                                       ListingState>(
                                     builder: (context, listState) {
                                       return Container(
+                                          padding: EdgeInsets.all(15),
                                           alignment: Alignment.center,
                                           width:
                                               MediaQuery.of(context).size.width,
                                           child: Text(
-                                            'de ' +
+                                            'Somme perçue:  ' +
                                                 Utility.totalNet(
                                                         listState.listing)
                                                     .toString() +
@@ -74,6 +61,18 @@ class PaymentCompletedScreen extends StatelessWidget {
                                     },
                                   );
                                 }
+                              },
+                            ),
+                            BlocBuilder<ListingCubit, ListingState>(
+                              builder: (context, listState) {
+                                return BlocBuilder<PaymentCompletedCubit,
+                                    PaymentCompletedState>(
+                                  builder: (context, state) {
+                                    return ChangeTitle(
+                                        listing: listState.listing,
+                                        paymentMethod: state.paymentMethod);
+                                  },
+                                );
                               },
                             ),
                             Expanded(
@@ -124,7 +123,7 @@ class PaymentCompletedScreen extends StatelessWidget {
                                     'Nouvelle vente',
                                     style: TextStyle(
                                         fontFamily: 'SourceSansPro',
-                                        fontSize: 20),
+                                        fontSize: 25),
                                   ),
                                 ),
                                 style: TextButton.styleFrom(
@@ -165,16 +164,17 @@ class PaymentCompletedScreen extends StatelessWidget {
                                   builder: (context, state) {
                                 List<ListItem> items = Utility.bill(
                                     listState.listing, state.paymentMethod);
-                                return ListView.builder(
-                                    itemCount: items.length,
-                                    shrinkWrap: true,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      final item = items[index];
+                                return Container(
+                                    child: ListView.builder(
+                                        itemCount: items.length,
+                                        shrinkWrap: true,
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
+                                          final item = items[index];
 
-                                      return Container(
-                                          child: item.buildTitle(context));
-                                    });
+                                          return Container(
+                                              child: item.buildTitle(context));
+                                        }));
                               });
                             },
                           ),

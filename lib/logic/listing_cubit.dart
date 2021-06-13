@@ -6,6 +6,7 @@ import 'package:serva_cash_register/data/data_provider/local_user_service_provid
 import 'package:serva_cash_register/data/data_provider/local_saved_order_label_provider.dart';
 import 'package:serva_cash_register/data/data_provider/serva_helper.dart';
 import 'package:serva_cash_register/data/models/article.dart';
+import 'package:serva_cash_register/data/models/order_item_local.dart';
 import 'package:serva_cash_register/data/models/service.dart';
 import 'package:serva_cash_register/data/models/order_item.dart';
 import 'package:serva_cash_register/data/repositories/listing_repository.dart';
@@ -59,9 +60,9 @@ class ListingCubit extends Cubit<ListingState> {
 
   void selectedListFromLocal(String orderItemLabel) async {
     List<Map<String, dynamic>> listing = [];
-    final List<OrderItem> orderItems =
+    final List<OrderItemLocal> orderItems =
         await _listingRepository.selectedLocalListing(orderItemLabel);
-    for (OrderItem element in orderItems) {
+    for (OrderItemLocal element in orderItems) {
       listing.add(_listingRepository.createListingElement(element));
     }
     emit(ListingState(

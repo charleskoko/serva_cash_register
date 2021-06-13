@@ -12,8 +12,8 @@ class PaymentCompletedWithCash extends StatelessWidget {
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width,
       child: Text(
-        'de ' + cash + ' XOF',
-        style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 20),
+        'Somme perçue: ' + cash + ' XOF',
+        style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 30),
       ),
     );
   }

@@ -10,7 +10,10 @@ class ArticleInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: Colors.grey.shade300,
+        decoration: BoxDecoration(
+          color: Colors.grey.shade300,
+          borderRadius: BorderRadius.circular(15)
+        ),
         padding: EdgeInsets.only(top: 3),
         child: Column(
           children: [

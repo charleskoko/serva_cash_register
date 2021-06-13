@@ -19,7 +19,7 @@ class HeadingItem implements ListItem {
       width: MediaQuery.of(context).size.width,
       child: Text(
         heading.toUpperCase(),
-        style: TextStyle(fontSize: 15, color: Colors.grey.shade400),
+        style: TextStyle(fontSize: 25, color: Colors.grey.shade400),
       ),
     );
   }
@@ -42,14 +42,14 @@ class TotalItem implements ListItem {
           Text(
             'total'.toUpperCase(),
             style: TextStyle(
-                fontSize: 15,
+                fontSize: 25,
                 fontFamily: 'SourceSansPro',
                 fontWeight: FontWeight.bold),
           ),
           Text(
             total.toStringAsFixed(2),
             style: TextStyle(
-                fontSize: 15,
+                fontSize: 25,
                 fontFamily: 'SourceSansPro',
                 fontWeight: FontWeight.bold),
           ),
@@ -78,14 +78,14 @@ class PaymentMethodItem implements ListItem {
             children: [
               Text(
                 method['paymentMethod'].toUpperCase(),
-                style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
+                style: TextStyle(fontSize: 25, fontFamily: 'SourceSansPro'),
               ),
               Text(
                 (method['paymentMethod'] == 'PAYMENT_CASH')
                     ? method['value'].toString()
                     : total.toString(),
                 style: TextStyle(
-                    fontSize: 15,
+                    fontSize: 25,
                     fontFamily: 'SourceSansPro',
                     fontWeight: FontWeight.bold),
               ),
@@ -99,13 +99,13 @@ class PaymentMethodItem implements ListItem {
                     Text(
                       'Rendu'.toUpperCase(),
                       style:
-                          TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
+                          TextStyle(fontSize: 20, fontFamily: 'SourceSansPro'),
                     ),
                     Text(
                       (double.parse(method['value']) - total)
                           .toStringAsFixed(2),
                       style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 20,
                           fontFamily: 'SourceSansPro',
                           fontWeight: FontWeight.bold),
                     ),
@@ -144,12 +144,12 @@ class ArticleItem implements ListItem {
                                 ' (' +
                                 (article['quantity'].toString() + ')'),
                             style: TextStyle(
-                                fontSize: 15, fontFamily: 'SourceSansPro'),
+                                fontSize: 22, fontFamily: 'SourceSansPro'),
                           ),
                           Text(
                             article['price'].toString(),
                             style: TextStyle(
-                                fontFamily: 'SourceSansPro', fontSize: 15),
+                                fontFamily: 'SourceSansPro', fontSize: 22),
                           ),
                         ],
                       ),
@@ -163,12 +163,12 @@ class ArticleItem implements ListItem {
                                 .toString()
                                 .padLeft(10, '0'),
                             style: TextStyle(
-                                fontSize: 15, fontFamily: 'SourceSansPro'),
+                                fontSize: 22, fontFamily: 'SourceSansPro'),
                           ),
                           Text(
                             article['total'].toString(),
                             style: TextStyle(
-                                fontFamily: 'SourceSansPro', fontSize: 15),
+                                fontFamily: 'SourceSansPro', fontSize: 22),
                           ),
                         ],
                       )

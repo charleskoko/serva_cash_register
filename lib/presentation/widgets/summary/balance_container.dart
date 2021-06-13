@@ -23,7 +23,7 @@ class BalanceContainer extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'Solde initial:',
+                        'Solde initiale:',
                         style: TextStyle(
                             fontSize: 35,
                             fontFamily: 'SourceSansOpen',

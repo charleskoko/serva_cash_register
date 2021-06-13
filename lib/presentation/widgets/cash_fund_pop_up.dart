@@ -67,7 +67,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                     Icon(
                       FontAwesomeIcons.keyboard,
                       size: 40,
-                      color: Colors.green.shade400,
+                      color: Color(0xff973be8),
                     ),
                     SizedBox(
                       width: 15,
@@ -365,7 +365,8 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                           SizedBox(height: 30),
                           BlocBuilder<InitialBalanceCubit, InitialBalanceState>(
                               builder: (context, state) {
-                            if (state is InitialBalanceInitial || state is InitialBalanceError) {
+                            if (state is InitialBalanceInitial ||
+                                state is InitialBalanceError) {
                               return TextButton(
                                 onPressed: () {
                                   BlocProvider.of<InitialBalanceCubit>(context)

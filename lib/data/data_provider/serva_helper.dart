@@ -1,5 +1,6 @@
 import 'package:serva_cash_register/data/models/article.dart';
 import 'package:serva_cash_register/data/models/order_item.dart';
+import 'package:serva_cash_register/data/models/order_item_local.dart';
 import 'package:sqflite/sqflite.dart';
 
 final String tableArticles = 'articles';
@@ -42,7 +43,6 @@ class ServaHelper {
     final int result = await db.insert(tableArticles, article.toJson());
   }
 
-
   void insertOrderItem(OrderItem orderItem) async {
     var db = await this.database;
     final int result = await db.insert(tableOrderItems, orderItem.toJson());
@@ -54,20 +54,21 @@ class ServaHelper {
         where: '$orderItemColumnName = ?', whereArgs: [name]);
   }
 
-  Future<List<OrderItem>> getOrderItem({String name}) async {
+  Future<List<OrderItemLocal>> getOrderItemFromLocalDataBase(
+      {String name}) async {
     var db = await this.database;
-    List<OrderItem> orderItems = [];
+    List<OrderItemLocal> orderItems = [];
     if (name == null) {
       var result = await db.query(tableOrderItems);
       result.forEach((element) {
-        var orderItem = OrderItem.fromJson(element);
+        var orderItem = OrderItemLocal.fromJson(element);
         orderItems.add(orderItem);
       });
     } else {
       var result = await db.query(tableOrderItems,
           where: '$orderItemColumnName = ?', whereArgs: [name]);
       result.forEach((element) {
-        var orderItem = OrderItem.fromJson(element);
+        var orderItem = OrderItemLocal.fromJson(element);
         orderItems.add(orderItem);
       });
     }

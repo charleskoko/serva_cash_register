@@ -14,7 +14,7 @@ class OtherPaymentContent extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.all(5),
+            padding: EdgeInsets.all(10),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
               border: Border(
@@ -33,7 +33,7 @@ class OtherPaymentContent extends StatelessWidget {
                         Text(
                           'Mobile money',
                           style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 30,
                               fontFamily: 'SourceSansPro',
                               fontWeight: FontWeight.bold),
                         )
@@ -55,12 +55,10 @@ class OtherPaymentContent extends StatelessWidget {
                         .saveOrder(paymentMethod, withMobile: true);
                   },
                   child: Container(
-                    alignment: Alignment.center,
+                    alignment: Alignment.centerLeft,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(color: Colors.grey.shade300))),
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(),
                     child: Text(
                       'Orange money',
                       style: TextStyle(
@@ -83,12 +81,10 @@ class OtherPaymentContent extends StatelessWidget {
                         .saveOrder(paymentMethod, withMobile: true);
                   },
                   child: Container(
-                    alignment: Alignment.center,
+                    alignment: Alignment.centerLeft,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(color: Colors.grey.shade300))),
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(),
                     child: Text(
                       'MTN Mobile money',
                       style: TextStyle(
@@ -111,9 +107,9 @@ class OtherPaymentContent extends StatelessWidget {
                         .saveOrder(paymentMethod, withMobile: true);
                   },
                   child: Container(
-                    alignment: Alignment.center,
+                    alignment: Alignment.centerLeft,
                     width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(15),
                     child: Text(
                       'Moov Flooz',
                       style: TextStyle(

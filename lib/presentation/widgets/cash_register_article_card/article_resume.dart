@@ -8,6 +8,7 @@ class ArticleResume extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
       padding: EdgeInsets.only(right: 4),
       height: 30,
       child: Row(
@@ -16,16 +17,12 @@ class ArticleResume extends StatelessWidget {
           Text(
             'x',
             style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'SourceSansPro',
-                color: Colors.white),
+                fontSize: 18, fontFamily: 'SourceSansPro', color: Colors.white),
           ),
           Text(
-          articleSum.toString(),
+            articleSum.toString(),
             style: TextStyle(
-                fontFamily: 'SourceSansPro',
-                fontSize: 20,
-                color: Colors.white),
+                fontFamily: 'SourceSansPro', fontSize: 20, color: Colors.white),
           ),
         ],
       ),

@@ -7,6 +7,7 @@ import 'package:serva_cash_register/data/data_provider/local_user_service_provid
 import 'package:serva_cash_register/data/data_provider/serva_helper.dart';
 import 'package:serva_cash_register/data/models/company.dart';
 import 'package:serva_cash_register/data/models/order_item.dart';
+import 'package:serva_cash_register/data/models/order_item_local.dart';
 import 'package:serva_cash_register/data/models/service.dart';
 
 import 'locator_service.dart';
@@ -56,9 +57,9 @@ class ListingService {
     }
   }
 
-  Future<List<OrderItem>> selectLocalListing(orderItem) async {
-    final List<OrderItem> orderItems =
-        await _servaHelper.getOrderItem(name: orderItem);
+  Future<List<OrderItemLocal>> selectLocalListing(orderItem) async {
+    final List<OrderItemLocal> orderItems =
+        await _servaHelper.getOrderItemFromLocalDataBase(name: orderItem);
 
     return orderItems;
   }

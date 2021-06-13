@@ -31,7 +31,19 @@ class ConfirmCloseService extends StatelessWidget {
                   fontFamily: 'SourceSansPro',
                   fontSize: 30,
                   fontWeight: FontWeight.bold),
-            )
+            ),
+            SizedBox(
+              width: 15,
+            ),
+            (isPasswordFalse != null && isPasswordFalse)
+                ? Container(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Mot de passe incorrect',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  )
+                : Container(),
           ],
         ),
       ),
@@ -40,7 +52,7 @@ class ConfirmCloseService extends StatelessWidget {
         alignment: Alignment.centerLeft,
         padding: EdgeInsets.only(left: 55),
         width: 650,
-        height: 290,
+        height: 260,
         child: Column(
           children: [
             Text(
@@ -50,7 +62,7 @@ class ConfirmCloseService extends StatelessWidget {
             Container(
               alignment: Alignment.centerRight,
               width: MediaQuery.of(context).size.width,
-              height: 100,
+              height: 80,
               child: TextField(
                 obscureText: true,
                 controller: labelController,
@@ -74,16 +86,7 @@ class ConfirmCloseService extends StatelessWidget {
                 );
               },
             ),
-            (isPasswordFalse != null && isPasswordFalse)
-                ? Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Mot de passe incorrect',
-                      style: TextStyle(color: Colors.red),
-                    ),
-                  )
-                : Container(),
-            SizedBox(height: 15),
+            SizedBox(height: 10),
             Container(
               alignment: Alignment.centerRight,
               child: Row(

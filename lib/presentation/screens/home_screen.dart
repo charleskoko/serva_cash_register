@@ -55,98 +55,72 @@ class HomeScreen extends StatelessWidget {
                 padding: EdgeInsets.only(left: 10, right: 10),
                 child: Column(
                   children: [
-                    Card(
+                    Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.all(10),
+                      width: MediaQuery.of(context).size.width,
+                      height: 90,
                       child: Container(
-                        color: Colors.white,
-                        padding: EdgeInsets.all(10),
-                        width: MediaQuery.of(context).size.width,
-                        height: 70,
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Container(
-                                  child: Row(
-                                    children: [
-                                      Expanded(
-                                          child: Container(
-                                        alignment: Alignment.centerRight,
-                                        decoration: BoxDecoration(
-                                          image: DecorationImage(
-                                            image: AssetImage(
-                                                "images/serva_logo.png"),
-                                          ),
-                                        ),
-                                      )),
-                                      Expanded(child: Container()),
-                                      Expanded(child: Container()),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              BlocBuilder<InitializationCubit,
-                                  InitializationState>(
-                                builder: (context, state) {
-                                  if (state is Initialized) {
-                                    return Expanded(
-                                      flex: 3,
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        child: Text(
-                                          state.selectedCompany.label
-                                              .toUpperCase(),
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontFamily: 'SourceSansPro',
-                                              letterSpacing: 1.5,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Container(),
+                            ),
+                            BlocBuilder<InitializationCubit,
+                                InitializationState>(
+                              builder: (context, state) {
+                                if (state is Initialized) {
+                                  return Expanded(
+                                    flex: 3,
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        ''.toUpperCase(),
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontFamily: 'SourceSansPro',
+                                            letterSpacing: 1.5,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                    );
-                                  } else {
-                                    return Container();
-                                  }
-                                },
-                              ),
-                              Expanded(
-                                child: Container(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                    '${state.user.firstName} ${state.user.lastName}',
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontFamily: 'SourceSansPro',
-                                        letterSpacing: 1.5,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                                    ),
+                                  );
+                                } else {
+                                  return Container();
+                                }
+                              },
+                            ),
+                            Expanded(
+                              child: Container(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  '${state.user.firstName} ${state.user.lastName}',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: 'SourceSansPro',
+                                      letterSpacing: 1.5,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(5.0),
+                    Expanded(
                       child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: MediaQuery.of(context).size.height / 1.2,
                         child: Column(
                           children: [
-                            Card(
-                              elevation: 10,
-                              child: Container(
-                                color: Colors.blueAccent,
-                                height: 50,
-                                child: Center(
-                                  child: Text(
-                                    'Bienvenue ${state.user.firstName}  !',
-                                    style: TextStyle(
-                                      fontFamily: 'Pacifico',
-                                      color: Colors.white,
-                                      fontSize: 20,
-                                    ),
+                            Container(
+                              color: Colors.blueAccent,
+                              height: 100,
+                              child: Center(
+                                child: Text(
+                                  'Bienvenue ${state.user.firstName}  !',
+                                  style: TextStyle(
+                                    fontFamily: 'Pacifico',
+                                    color: Colors.white,
+                                    fontSize: 60,
                                   ),
                                 ),
                               ),
@@ -159,6 +133,8 @@ class HomeScreen extends StatelessWidget {
                                     Expanded(
                                         child: Container(
                                       child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Expanded(
                                             child: InkWell(
@@ -216,7 +192,11 @@ class HomeScreen extends StatelessWidget {
                                                 }
                                               },
                                               child: Container(
-                                                color: Colors.grey.shade200,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.grey.shade200,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15)),
                                                 child: Column(
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
@@ -225,13 +205,13 @@ class HomeScreen extends StatelessWidget {
                                                       FontAwesomeIcons
                                                           .cashRegister,
                                                       color: Colors.blue,
-                                                      size: 40,
+                                                      size: 60,
                                                     ),
                                                     SizedBox(height: 10),
                                                     Text(
                                                       'Caisse',
                                                       style: TextStyle(
-                                                          fontSize: 18,
+                                                          fontSize: 30,
                                                           fontFamily:
                                                               'SourceSansPro',
                                                           fontWeight:
@@ -300,7 +280,11 @@ class HomeScreen extends StatelessWidget {
                                               }
                                             },
                                             child: Container(
-                                              color: Colors.grey.shade200,
+                                              decoration: BoxDecoration(
+                                                  color: Colors.grey.shade200,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15)),
                                               child: Column(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
@@ -309,13 +293,13 @@ class HomeScreen extends StatelessWidget {
                                                     FontAwesomeIcons
                                                         .shoppingBag,
                                                     color: Color(0xffA66834),
-                                                    size: 40,
+                                                    size: 60,
                                                   ),
                                                   SizedBox(height: 10),
                                                   Text(
                                                     'Articles',
                                                     style: TextStyle(
-                                                      fontSize: 18,
+                                                      fontSize: 30,
                                                       fontFamily:
                                                           'SourceSansPro',
                                                       fontWeight:
@@ -328,7 +312,6 @@ class HomeScreen extends StatelessWidget {
                                               ),
                                             ),
                                           )),
-                                          SizedBox(width: 10)
                                         ],
                                       ),
                                     )),
@@ -354,8 +337,13 @@ class HomeScreen extends StatelessWidget {
                                                           .initialBalance();
                                                     },
                                                     child: Container(
-                                                      color:
-                                                          Colors.grey.shade200,
+                                                      decoration: BoxDecoration(
+                                                          color: Colors
+                                                              .grey.shade200,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      15)),
                                                       child: Column(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
@@ -366,13 +354,13 @@ class HomeScreen extends StatelessWidget {
                                                                 .briefcase,
                                                             color:
                                                                 Colors.orange,
-                                                            size: 40,
+                                                            size: 80,
                                                           ),
                                                           SizedBox(height: 10),
                                                           Text(
                                                             'Demarrer un service',
                                                             style: TextStyle(
-                                                              fontSize: 18,
+                                                              fontSize: 30,
                                                               fontFamily:
                                                                   'SourceSansPro',
                                                               fontWeight:
@@ -399,8 +387,13 @@ class HomeScreen extends StatelessWidget {
                                                           context, '/summary');
                                                     },
                                                     child: Container(
-                                                      color:
-                                                          Colors.grey.shade200,
+                                                      decoration: BoxDecoration(
+                                                          color: Colors
+                                                              .grey.shade200,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      15)),
                                                       child: Column(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
@@ -411,13 +404,13 @@ class HomeScreen extends StatelessWidget {
                                                                 .bed,
                                                             color:
                                                                 Colors.orange,
-                                                            size: 40,
+                                                            size: 80,
                                                           ),
                                                           SizedBox(height: 10),
                                                           Text(
                                                             'Terminer son service',
                                                             style: TextStyle(
-                                                              fontSize: 18,
+                                                              fontSize: 30,
                                                               fontFamily:
                                                                   'SourceSansPro',
                                                               fontWeight:
@@ -438,92 +431,102 @@ class HomeScreen extends StatelessWidget {
                                             )),
                                             SizedBox(width: 10),
                                             Expanded(
-                                                child: InkWell(
-                                              onTap: () {
-                                                var stateInitialBalance = context
-                                                    .read<InitialBalanceCubit>()
-                                                    .state;
+                                              child: InkWell(
+                                                onTap: () {
+                                                  var stateInitialBalance = context
+                                                      .read<
+                                                          InitialBalanceCubit>()
+                                                      .state;
 
-                                                if (stateInitialBalance
-                                                        is InitialBalanceInitialisation ||
-                                                    stateInitialBalance
-                                                        is InitialBalanceInitial) {
-                                                  showGeneralDialog(
-                                                      barrierColor: Colors.black
-                                                          .withOpacity(0.5),
-                                                      transitionBuilder:
-                                                          (context, a1, a2,
-                                                              widget) {
-                                                        final curvedValue = Curves
-                                                                .easeInOutBack
-                                                                .transform(
-                                                                    a1.value) -
-                                                            1.0;
-                                                        return Transform(
-                                                          transform: Matrix4
-                                                              .translationValues(
-                                                                  0.0,
-                                                                  curvedValue *
-                                                                      200,
-                                                                  0.0),
-                                                          child: Opacity(
-                                                            opacity: a1.value,
-                                                            child: NoServiceStarted(
-                                                                'Désolé, vous n\'avez pas démarré un service, vous devez démarrer un service avant d\'accéder aux reçus.'),
-                                                          ),
-                                                        );
-                                                      },
-                                                      transitionDuration:
-                                                          Duration(
-                                                              milliseconds:
-                                                                  500),
-                                                      barrierDismissible: true,
-                                                      barrierLabel: '',
-                                                      context: context,
-                                                      pageBuilder: (context,
-                                                          animation1,
-                                                          animation2) {});
-                                                }
+                                                  if (stateInitialBalance
+                                                          is InitialBalanceInitialisation ||
+                                                      stateInitialBalance
+                                                          is InitialBalanceInitial) {
+                                                    showGeneralDialog(
+                                                        barrierColor: Colors
+                                                            .black
+                                                            .withOpacity(0.5),
+                                                        transitionBuilder:
+                                                            (context, a1, a2,
+                                                                widget) {
+                                                          final curvedValue = Curves
+                                                                  .easeInOutBack
+                                                                  .transform(a1
+                                                                      .value) -
+                                                              1.0;
+                                                          return Transform(
+                                                            transform: Matrix4
+                                                                .translationValues(
+                                                                    0.0,
+                                                                    curvedValue *
+                                                                        200,
+                                                                    0.0),
+                                                            child: Opacity(
+                                                              opacity: a1.value,
+                                                              child: NoServiceStarted(
+                                                                  'Désolé, vous n\'avez pas démarré un service, vous devez démarrer un service avant d\'accéder aux reçus.'),
+                                                            ),
+                                                          );
+                                                        },
+                                                        transitionDuration:
+                                                            Duration(
+                                                                milliseconds:
+                                                                    500),
+                                                        barrierDismissible:
+                                                            true,
+                                                        barrierLabel: '',
+                                                        context: context,
+                                                        pageBuilder: (context,
+                                                            animation1,
+                                                            animation2) {});
+                                                  }
 
-                                                if (stateInitialBalance
-                                                    is InitialBalanceSaved) {
-                                                  BlocProvider.of<InvoiceCubit>(
-                                                          context)
-                                                      .getAllInvoiceCurrentInitialBalance();
-                                                  Navigator.of(context)
-                                                      .pushNamed('/invoices');
-                                                } else {}
-                                              },
-                                              child: Container(
-                                                color: Colors.grey.shade200,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Icon(
-                                                      FontAwesomeIcons
-                                                          .fileInvoice,
-                                                      color: Colors.green,
-                                                      size: 40,
-                                                    ),
-                                                    SizedBox(height: 10),
-                                                    Text(
-                                                      'Réçu',
-                                                      style: TextStyle(
-                                                        fontSize: 18,
-                                                        fontFamily:
-                                                            'SourceSansPro',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        letterSpacing: 1.5,
+                                                  if (stateInitialBalance
+                                                      is InitialBalanceSaved) {
+                                                    BlocProvider.of<
+                                                                InvoiceCubit>(
+                                                            context)
+                                                        .getAllInvoiceCurrentInitialBalance();
+                                                    Navigator.of(context)
+                                                        .pushNamed('/invoices');
+                                                  } else {}
+                                                },
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      color:
+                                                          Colors.grey.shade200,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              15)),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Icon(
+                                                        FontAwesomeIcons
+                                                            .fileInvoice,
                                                         color: Colors.green,
+                                                        size: 60,
                                                       ),
-                                                    )
-                                                  ],
+                                                      SizedBox(height: 10),
+                                                      Text(
+                                                        'Réçu',
+                                                        style: TextStyle(
+                                                          fontSize: 30,
+                                                          fontFamily:
+                                                              'SourceSansPro',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          letterSpacing: 1.5,
+                                                          color: Colors.green,
+                                                        ),
+                                                      )
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            )),
-                                            SizedBox(width: 10),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -531,6 +534,9 @@ class HomeScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                            ),
+                            Container(
+                              child: Text('1.1.0 - beta'),
                             )
                           ],
                         ),

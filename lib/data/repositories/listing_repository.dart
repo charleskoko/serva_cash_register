@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'package:serva_cash_register/data/models/article.dart';
 import 'package:serva_cash_register/data/models/order_item.dart';
+import 'package:serva_cash_register/data/models/order_item_local.dart';
 import 'package:serva_cash_register/data/services/listing_service.dart';
 
 class ListingRepository {
   ListingService _listingService = ListingService();
-
 
   List<Map<String, dynamic>> addArticleToListing(
       Article product, List<Map<String, dynamic>> listing,
@@ -88,14 +88,14 @@ class ListingRepository {
     return listing;
   }
 
-  Future<List<OrderItem>> selectedLocalListing(orderItemLabel) async {
-    final List<OrderItem> orderItems =
+  Future<List<OrderItemLocal>> selectedLocalListing(orderItemLabel) async {
+    final List<OrderItemLocal> orderItems =
         await _listingService.selectLocalListing(orderItemLabel);
 
     return orderItems;
   }
 
-  Map<String, dynamic> createListingElement(OrderItem element) {
+  Map<String, dynamic> createListingElement(OrderItemLocal element) {
     return {
       'product': element.article,
       'price': element.price,

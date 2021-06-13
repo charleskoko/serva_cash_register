@@ -5,6 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:serva_cash_register/data/data_provider/local_saved_order_label_provider.dart';
 import 'package:serva_cash_register/data/data_provider/serva_helper.dart';
 import 'package:serva_cash_register/data/models/order_item.dart';
+import 'package:serva_cash_register/data/models/order_item_local.dart';
 
 part 'states/local_order_item_state.dart';
 
@@ -18,7 +19,8 @@ class LocalOrderItemCubit extends Cubit<LocalOrderItemState> {
     try {
       List<dynamic> labels = jsonDecode(labelsString);
       labels.sort();
-      final List<OrderItem> test = await _servaHelper.getOrderItem();
+      final List<OrderItemLocal> test =
+          await _servaHelper.getOrderItemFromLocalDataBase();
       emit(LocalOrderItemLoaded(labels));
     } on NoSuchMethodError {
       emit(LocalOrderItemLoaded([]));
@@ -34,7 +36,8 @@ class LocalOrderItemCubit extends Cubit<LocalOrderItemState> {
     labels.remove(orderItemLabel);
     labels.sort();
     _localSavedOrderLabel.writeLocalSavedOrderLabel(jsonEncode(labels));
-    final List<OrderItem> test = await _servaHelper.getOrderItem();
+    final List<OrderItemLocal> test =
+        await _servaHelper.getOrderItemFromLocalDataBase();
     emit(LocalOrderItemLoaded(labels));
   }
 }

@@ -248,7 +248,7 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                           Icon(
                                             FontAwesomeIcons.save,
                                             size: 40,
-                                            color: Colors.green.shade400,
+                                            color: Color(0xff973be8),
                                           ),
                                           SizedBox(
                                             width: 15,
@@ -310,7 +310,7 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                                                               child: Row(
                                                                                 children: [
                                                                                   Container(
-                                                                                    width: 20,
+                                                                                    width: 10,
                                                                                     child: InkWell(
                                                                                       onTap: () {
                                                                                         BlocProvider.of<LocalOrderItemCubit>(context).delete(state.orderItems[index]);
@@ -321,37 +321,48 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                  SizedBox(width: 70),
-                                                                                  InkWell(
-                                                                                    onTap: () {
-                                                                                      BlocProvider.of<ListingCubit>(context).selectedListFromLocal(state.orderItems[index]);
-                                                                                      Navigator.of(context).pop();
-                                                                                    },
-                                                                                    child: Container(
-                                                                                      width: MediaQuery.of(context).size.width / 4,
-                                                                                      alignment: Alignment.centerLeft,
-                                                                                      child: Text(
-                                                                                        '$index - ' + state.orderItems[index].toString().toUpperCase(),
-                                                                                        style: TextStyle(
-                                                                                          fontFamily: 'SourceSansPro',
-                                                                                          fontSize: 25,
+                                                                                  SizedBox(width: 40),
+                                                                                  Expanded(
+                                                                                    flex: 3,
+                                                                                    child: InkWell(
+                                                                                      onTap: () {
+                                                                                        BlocProvider.of<ListingCubit>(context).selectedListFromLocal(state.orderItems[index]);
+                                                                                        Navigator.of(context).pop();
+                                                                                      },
+                                                                                      child: Container(
+                                                                                        alignment: Alignment.centerLeft,
+                                                                                        child: Text(
+                                                                                          '${index + 1} - ' + state.orderItems[index].toString().toUpperCase(),
+                                                                                          style: TextStyle(
+                                                                                            fontFamily: 'SourceSansPro',
+                                                                                            fontSize: 25,
+                                                                                          ),
+                                                                                          textAlign: TextAlign.left,
                                                                                         ),
-                                                                                        textAlign: TextAlign.left,
                                                                                       ),
                                                                                     ),
                                                                                   ),
-                                                                                  Container(
-                                                                                    width: 30,
-                                                                                    child: InkWell(
-                                                                                      onTap: () {
-                                                                                        Navigator.of(context).pop();
-                                                                                        BlocProvider.of<ListingCubit>(context).selectedListFromLocal(state.orderItems[index]);
-                                                                                        Navigator.of(context).pushNamed('/paymentMethod');
-                                                                                        BlocProvider.of<PaymentMethodCubit>(context).cashSelected();
-                                                                                      },
-                                                                                      child: Icon(
-                                                                                        FontAwesomeIcons.receipt,
-                                                                                        color: Colors.green,
+                                                                                  Expanded(
+                                                                                    child: Container(
+                                                                                      child: TextButton(
+                                                                                        onPressed: () {
+                                                                                          Navigator.of(context).pop();
+                                                                                          BlocProvider.of<ListingCubit>(context).selectedListFromLocal(state.orderItems[index]);
+                                                                                          Navigator.of(context).pushNamed('/paymentMethod');
+                                                                                          BlocProvider.of<PaymentMethodCubit>(context).cashSelected();
+                                                                                        },
+                                                                                        style: TextButton.styleFrom(
+                                                                                          primary: Colors.white,
+                                                                                          backgroundColor: Color(0xff973be8),
+                                                                                          onSurface: Colors.grey,
+                                                                                        ),
+                                                                                        child: Padding(
+                                                                                          padding: const EdgeInsets.all(5),
+                                                                                          child: Text(
+                                                                                            'Cloturer',
+                                                                                            style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 20, fontWeight: FontWeight.bold),
+                                                                                          ),
+                                                                                        ),
                                                                                       ),
                                                                                     ),
                                                                                   )
@@ -403,12 +414,15 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                         backgroundColor: Color(0xff973be8),
                         onSurface: Colors.grey,
                       ),
-                      child: Text(
-                        'Enregistrer la vente',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'SourceSansPro',
-                          fontSize: 20,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          'Enregistrer la vente',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'SourceSansPro',
+                            fontSize: 20,
+                          ),
                         ),
                       ),
                       onPressed: () {
@@ -436,7 +450,7 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                             Icon(
                                               FontAwesomeIcons.keyboard,
                                               size: 40,
-                                              color: Colors.green.shade400,
+                                              color: Color(0xff973be8),
                                             ),
                                             SizedBox(
                                               width: 15,
@@ -524,16 +538,21 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                                   .width,
                                               height: 50,
                                               child: TextButton(
-                                                child: Text(
-                                                  'Valider',
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(5),
+                                                  child: Text(
+                                                    'Valider',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 20),
+                                                  ),
                                                 ),
                                                 style: TextButton.styleFrom(
                                                   primary: Colors.white,
-                                                  backgroundColor: Colors.blue,
+                                                  backgroundColor:
+                                                      Color(0xff973be8),
                                                   onSurface: Colors.grey,
                                                 ),
                                                 onPressed: () {

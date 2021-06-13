@@ -48,9 +48,13 @@ class ArticleCard extends StatelessWidget {
           },
           //article card
           child: Container(
-            color: (Utility.selectedArticle(product, state.listing) == 0)
-                ? Colors.white
-                :  Color(0xff973be8),
+            decoration: BoxDecoration(
+              color: (Utility.selectedArticle(product, state.listing) == 0)
+                  ? Colors.white
+                  :  Color(0xff973be8),
+              borderRadius: BorderRadius.circular(15)
+            ),
+
             child: Column(
               children: [
                 ArticleResume(

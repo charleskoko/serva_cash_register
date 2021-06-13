@@ -37,7 +37,7 @@ class _PriceEntryPopUpState extends State<PriceEntryPopUp> {
                     Icon(
                       FontAwesomeIcons.keyboard,
                       size: 40,
-                      color: Colors.green.shade400,
+                      color: Color(0xff973be8),
                     ),
                     SizedBox(
                       width: 15,
@@ -64,7 +64,9 @@ class _PriceEntryPopUpState extends State<PriceEntryPopUp> {
                     SizedBox(height: 10),
                     Container(
                       child: Text(
-                        (cashFund == null) ? 0.toString()+' XOF' : cashFund + ' XOF',
+                        (cashFund == null)
+                            ? 0.toString() + ' XOF'
+                            : cashFund + ' XOF',
                         style: TextStyle(
                             fontFamily: 'SourceSansPro', fontSize: 30),
                       ),
@@ -342,15 +344,17 @@ class _PriceEntryPopUpState extends State<PriceEntryPopUp> {
                               },
                               style: TextButton.styleFrom(
                                 primary: Colors.white,
-                                backgroundColor: Colors.blue,
+                                backgroundColor: Color(0xff973be8),
                                 onSurface: Colors.grey,
                               ),
-                              child: Text(
-                                'Valider',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'SourceSansPro',
-                                  fontWeight: FontWeight.bold
+                              child: Padding(
+                                padding: const EdgeInsets.all(5),
+                                child: Text(
+                                  'Valider',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontFamily: 'SourceSansPro',
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ))
                         ],

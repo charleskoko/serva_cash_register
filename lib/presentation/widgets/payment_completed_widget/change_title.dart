@@ -11,7 +11,7 @@ class ChangeTitle extends StatelessWidget {
       child: Text(
         'à rendre',
         style: TextStyle(
-            fontFamily: 'SourceSansPro', fontSize: 20),
+            fontFamily: 'SourceSansPro', fontSize: 30),
       ),
     );
   }

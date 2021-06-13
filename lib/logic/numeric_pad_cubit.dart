@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-part 'numeric_pad_state.dart';
+part 'states/numeric_pad_state.dart';
 
 class NumericPadCubit extends Cubit<NumericPadState> {
   NumericPadCubit() : super(NumericPadState(value: '0'));

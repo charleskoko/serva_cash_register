@@ -13,12 +13,12 @@ class PaymentCompletedTitle extends StatelessWidget {
           Icon(
             FontAwesomeIcons.checkCircle,
             color: Colors.green,
-            size: 40,
+            size: 45,
           ),
           SizedBox(width: 10),
           Text(
             'Paiment terminé',
-            style: TextStyle(fontSize: 40, fontFamily: 'SourceSansPro'),
+            style: TextStyle(fontSize: 50, fontFamily: 'SourceSansPro'),
           )
         ],
       ),

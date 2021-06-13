@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-part 'payment_completed_state.dart';
+part 'states/payment_completed_state.dart';
 
 class PaymentCompletedCubit extends Cubit<PaymentCompletedState> {
   PaymentCompletedCubit() : super(PaymentCompletedState(paymentMethod:{}));

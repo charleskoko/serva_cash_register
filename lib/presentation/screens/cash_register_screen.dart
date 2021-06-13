@@ -1,17 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serva_cash_register/logic/article_cubit.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/utility.dart';
 import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_list_item.dart';
 import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_empty_sale_list.dart';
-import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_gross_total.dart';
-import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_sale_navbar_add_customer.dart';
 import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_sale_navbar_current_sale.dart';
-import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_sale_taxe.dart';
 import 'package:serva_cash_register/presentation/widgets/cash_register_screen_sale_list_widget/register_screen_submit_button.dart';
 import 'package:serva_cash_register/presentation/widgets/register_screen_general_widgets/article_list.dart';
 import 'package:serva_cash_register/presentation/widgets/register_screen_general_widgets/loading_articles.dart';

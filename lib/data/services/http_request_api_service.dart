@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:serva_cash_register/core/abstract/http_request_service.dart';
+import 'package:serva_cash_register/core/exceptions.dart';
 import 'package:serva_cash_register/data/repositories/auth_repository.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -16,36 +19,78 @@ class HttpRequestApiService extends HttpRequestService {
 
   @override
   Future<Map<String, dynamic>> get(String url) async {
-    var uri = Uri.parse(url);
-    await _getToken();
-    final result = await http.get(uri, headers: _setHeaders());
-    Map<String, dynamic> body = json.decode(result.body);
+    try {
+      var uri = Uri.parse(url);
+      await _getToken();
+      final result = await http.get(uri, headers: _setHeaders());
+      if (result.statusCode == 401) {
+        throw UnauthorizedError();
+      } else {
+        Map<String, dynamic> body = json.decode(result.body);
 
-    return body;
+        return body;
+      }
+    } on SocketException {
+      throw NoServerConnectionError();
+    }
   }
 
   @override
   Future<Map<String, dynamic>> patch(String url,
       {Map<String, dynamic> data}) async {
-    var uri = Uri.parse(url);
-    await _getToken();
-    final result =
-        await http.patch(uri, body: json.encode(data), headers: _setHeaders());
-    Map<String, dynamic> body = json.decode(result.body);
+    try {
+      var uri = Uri.parse(url);
+      await _getToken();
+      final result = await http.patch(uri,
+          body: json.encode(data), headers: _setHeaders());
+      if (result.statusCode == 401) {
+        throw UnauthorizedError();
+      } else {
+        Map<String, dynamic> body = json.decode(result.body);
 
-    return body;
+        return body;
+      }
+    } on SocketException {
+      throw NoServerConnectionError();
+    }
   }
 
   @override
   Future<Map<String, dynamic>> post(String url,
       {Map<String, dynamic> data}) async {
-    var uri = Uri.parse(url);
-    await _getToken();
-    final result =
-        await http.post(uri, body: json.encode(data), headers: _setHeaders());
-    Map<String, dynamic> body = json.decode(result.body);
+    try {
+      var uri = Uri.parse(url);
+      await _getToken();
+      final result =
+          await http.post(uri, body: json.encode(data), headers: _setHeaders());
+      if (result.statusCode == 401) {
+        throw UnauthorizedError();
+      } else {
+        Map<String, dynamic> body = json.decode(result.body);
+        return body;
+      }
+    } on SocketException {
+      throw NoServerConnectionError();
+    }
+  }
 
-    return body;
+  @override
+  Future<Map<String, dynamic>> delete(String url,
+      {Map<String, dynamic> data}) async {
+    try {
+      var uri = Uri.parse(url);
+      await _getToken();
+      final result = await http.delete(uri, headers: _setHeaders());
+      if (result.statusCode == 401) {
+        throw UnauthorizedError();
+      } else {
+        Map<String, dynamic> body = json.decode(result.body);
+
+        return body;
+      }
+    } on SocketException {
+      throw NoServerConnectionError();
+    }
   }
 
   _setHeaders() => {

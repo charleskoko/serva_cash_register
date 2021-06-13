@@ -2,14 +2,17 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:serva_cash_register/data/data_provider/local_user_service_provider.dart';
 import 'package:serva_cash_register/data/data_provider/local_saved_order_label_provider.dart';
 import 'package:serva_cash_register/data/data_provider/serva_helper.dart';
 import 'package:serva_cash_register/data/models/article.dart';
+import 'package:serva_cash_register/data/models/service.dart';
 import 'package:serva_cash_register/data/models/order_item.dart';
 import 'package:serva_cash_register/data/repositories/listing_repository.dart';
 import 'package:serva_cash_register/data/services/listing_service.dart';
+import 'package:serva_cash_register/logic/utility.dart';
 
-part 'listing_state.dart';
+part 'states/listing_state.dart';
 
 class ListingCubit extends Cubit<ListingState> {
   final ListingRepository _listingRepository;
@@ -49,7 +52,6 @@ class ListingCubit extends Cubit<ListingState> {
         emit(ListingState(listing: listing, snackBarFor: 'isNotUnique'));
         break;
       default:
-        print(label);
         _listingRepository.saveLocalOrder(listing, text);
         emit(ListingState(listing: [], snackBarFor: 'saved', label: text));
     }
@@ -82,8 +84,15 @@ class ListingCubit extends Cubit<ListingState> {
       labels.sort();
       _localSavedOrderLabel.writeLocalSavedOrderLabel(jsonEncode(labels));
       await _listingRepository.deleteLocalListing(state.label);
+    } else {}
+  }
+
+  void saveOrder(Map<String, dynamic> paymentMethod, {bool withMobile}) async {
+    if (withMobile == true) {
+      paymentMethod['value'] = Utility.totalNet(state.listing);
+      _listingRepository.saveOrderItem(state.listing, paymentMethod);
     } else {
-      print('pas besoin de supprimer du local');
+      _listingRepository.saveOrderItem(state.listing, paymentMethod);
     }
   }
 }

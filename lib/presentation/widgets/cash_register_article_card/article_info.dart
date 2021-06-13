@@ -10,30 +10,31 @@ class ArticleInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
-        color: Colors.grey.shade400,
+        color: Colors.grey.shade300,
         padding: EdgeInsets.only(top: 3),
         child: Column(
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
               child: Text(
-                product.label.toUpperCase(),
+                product.label,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
                   fontFamily: 'SourceSansPro',
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
-            SizedBox(height: 5),
             Container(
               width: MediaQuery.of(context).size.width,
               child: Text(
                 product.price.toString() + ' XOF',
                 style: TextStyle(
                     fontFamily: 'SourceSansPro',
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
+                    fontSize: 20,
+                ),
                 textAlign: TextAlign.center,
               ),
             )

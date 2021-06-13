@@ -40,13 +40,12 @@ class ServaHelper {
   void insertArticle(Article article) async {
     var db = await this.database;
     final int result = await db.insert(tableArticles, article.toJson());
-    print('save in sql table article result: $result');
   }
+
 
   void insertOrderItem(OrderItem orderItem) async {
     var db = await this.database;
     final int result = await db.insert(tableOrderItems, orderItem.toJson());
-    print('save in sql table order item result: $result');
   }
 
   Future<int> deleteOrderITem(String name) async {

@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/payment_completed_cubit.dart';
+import 'package:serva_cash_register/logic/utility.dart';
 
 class OtherPaymentContent extends StatelessWidget {
   @override
@@ -43,12 +45,14 @@ class OtherPaymentContent extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     Map<String, dynamic> paymentMethod = {
-                      'paymentMethod': 'Orange',
+                      'paymentMethod': 'PAYMENT_ORANGE_MONEY',
                       'value': null
                     };
                     Navigator.of(context).pushNamed('/paymentCompleted');
                     BlocProvider.of<PaymentCompletedCubit>(context)
                         .paymentCompleted(paymentMethod);
+                    BlocProvider.of<ListingCubit>(context)
+                        .saveOrder(paymentMethod, withMobile: true);
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -69,12 +73,14 @@ class OtherPaymentContent extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     Map<String, dynamic> paymentMethod = {
-                      'paymentMethod': 'MTN',
+                      'paymentMethod': 'PAYMENT_MTN_MOBILE',
                       'value': null
                     };
                     Navigator.of(context).pushNamed('/paymentCompleted');
                     BlocProvider.of<PaymentCompletedCubit>(context)
                         .paymentCompleted(paymentMethod);
+                    BlocProvider.of<ListingCubit>(context)
+                        .saveOrder(paymentMethod, withMobile: true);
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -95,12 +101,14 @@ class OtherPaymentContent extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     Map<String, dynamic> paymentMethod = {
-                      'paymentMethod': 'Moov',
+                      'paymentMethod': 'PAYMENT_MOOV_MOBILE',
                       'value': null
                     };
                     Navigator.of(context).pushNamed('/paymentCompleted');
                     BlocProvider.of<PaymentCompletedCubit>(context)
                         .paymentCompleted(paymentMethod);
+                    BlocProvider.of<ListingCubit>(context)
+                        .saveOrder(paymentMethod, withMobile: true);
                   },
                   child: Container(
                     alignment: Alignment.center,

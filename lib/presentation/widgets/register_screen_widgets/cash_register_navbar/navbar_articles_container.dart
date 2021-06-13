@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'navbar_company_name.dart';
 import 'navbar_edit_button.dart';
-import 'navbar_new_article_button.dart';
+import 'navbar_search_field.dart';
 
 class NavbarArticlesContainer extends StatelessWidget {
   @override
@@ -22,7 +22,7 @@ class NavbarArticlesContainer extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           NavbarEditButton(),
-          NavbarNewArticleButton()
+          NavbarSearchField()
         ],
       ),
     );

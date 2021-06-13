@@ -81,7 +81,7 @@ class PaymentMethodItem implements ListItem {
                 style: TextStyle(fontSize: 15, fontFamily: 'SourceSansPro'),
               ),
               Text(
-                (method['paymentMethod'] == 'cash')
+                (method['paymentMethod'] == 'PAYMENT_CASH')
                     ? method['value'].toString()
                     : total.toString(),
                 style: TextStyle(
@@ -92,7 +92,7 @@ class PaymentMethodItem implements ListItem {
             ],
           ),
           SizedBox(height: 10),
-          (method['paymentMethod'] == 'cash')
+          (method['paymentMethod'] == 'PAYMENT_CASH')
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -158,7 +158,10 @@ class ArticleItem implements ListItem {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            article['product'].number.toString(),
+                            article['product']
+                                .number
+                                .toString()
+                                .padLeft(10, '0'),
                             style: TextStyle(
                                 fontSize: 15, fontFamily: 'SourceSansPro'),
                           ),

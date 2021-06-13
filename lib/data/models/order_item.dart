@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'article.dart';
 
 class OrderItem extends Equatable {
-  int id;
+  String id;
   String articleId;
   Article article;
   String name;
@@ -18,8 +18,10 @@ class OrderItem extends Equatable {
     this.articleId = json['productId'];
     this.name = json['name'];
     this.id = json['id'];
-    this.article = Article.fromJson(jsonDecode(json['article']));
-    this.price = json['price'];
+    if (json['article'] != null) {
+      this.article = Article.fromJson(json['article']);
+    }
+    this.price = json['price'].toDouble();
     this.quantity = json['quantity'];
   }
 

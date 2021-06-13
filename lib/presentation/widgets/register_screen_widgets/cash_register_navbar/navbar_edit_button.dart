@@ -7,7 +7,7 @@ class NavbarEditButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed('/settings');
+        Navigator.popAndPushNamed(context, '/home');
       },
       child: Container(
         width: 80,

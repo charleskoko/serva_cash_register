@@ -1,7 +1,11 @@
+import 'package:serva_cash_register/core/abstract/const.dart';
+import 'package:serva_cash_register/data/models/User.dart';
 import 'package:serva_cash_register/data/models/company.dart';
+import 'package:serva_cash_register/data/models/invoice.dart';
+import 'package:serva_cash_register/data/models/invoice.dart';
 import 'package:serva_cash_register/data/models/list_item.dart';
 import 'package:serva_cash_register/data/models/article.dart';
-
+import 'package:serva_cash_register/data/models/order.dart';
 
 class Utility {
   static totalNet(List<Map<String, dynamic>> listing) {
@@ -12,6 +16,31 @@ class Utility {
       }
     }
     return sum;
+  }
+
+  static companySelected(Company currentCompany, Company selectedCompany) {
+    bool isSelected = false;
+    if (currentCompany == selectedCompany) {
+      isSelected = true;
+    }
+
+    return isSelected;
+  }
+
+  static isInvoiceCanceled(Invoice invoice) {
+    if (invoice.status == 'canceled') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static isUserOwner(User user) {
+    if (user.role == Constant.USER_OWNER) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   static grossTotal(double totalNet) {
@@ -35,6 +64,7 @@ class Utility {
 
   static selectedCompany(Company company, Company selectedCompany) {
     bool isSelected = false;
+
     if (selectedCompany != null && company == selectedCompany) {
       isSelected = true;
     }
@@ -47,7 +77,7 @@ class Utility {
     double convertedCash;
     if (cash != 'c' && cash != 'delete') {
       convertedCash = double.parse(cash);
-      if (convertedCash - total > 0) {
+      if ((convertedCash - total > 0) || (convertedCash - total == 0)) {
         isCashEnough = true;
       }
     }
@@ -58,7 +88,7 @@ class Utility {
   static change(double total, Map<String, dynamic> paymentMethod) {
     String change = 'Rien à rendre';
 
-    if (paymentMethod['paymentMethod'] == 'cash') {
+    if (paymentMethod['paymentMethod'] == 'PAYMENT_CASH') {
       double cashToDouble = double.parse(paymentMethod['value']);
       change = (cashToDouble - total).toStringAsFixed(2) + ' XOF';
     }
@@ -76,15 +106,62 @@ class Utility {
       items.add(ArticleItem(element));
     }
     items.add(total);
-    double sum = grossTotal(totalNet(listing));
+    double sum = totalNet(listing);
     TotalItem totalItem = TotalItem(sum);
     items.add(totalItem);
     HeadingItem paymentMethod = HeadingItem('mode de paiement');
     items.add(paymentMethod);
     PaymentMethodItem paymentMethodItem =
-        PaymentMethodItem(paymentMethodInfo, grossTotal(totalNet(listing)));
+        PaymentMethodItem(paymentMethodInfo, totalNet(listing));
     items.add(paymentMethodItem);
 
     return items;
+  }
+
+  static validateEmail(String email) {
+    bool emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email);
+    if (emailValid == true) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  static double totalAmountPerPaymentMethod(
+      List<Invoice> invoices, String paymentMethod) {
+    double total = 0;
+    for (Invoice invoice in invoices) {
+      if (invoice.paymentMethod.method == paymentMethod &&
+          invoice.status == 'paid') {
+        total = total + invoice.paymentMethod.value;
+      }
+    }
+    return total;
+  }
+
+  static int totalNumberSalesPerPaymentMethod(
+      List<Invoice> invoices, String paymentMethod) {
+    int totalNumber = 0;
+    for (Invoice invoice in invoices) {
+      if (invoice.paymentMethod.method == paymentMethod &&
+          invoice.status == 'paid') {
+        totalNumber++;
+      }
+    }
+    return totalNumber;
+  }
+
+  static double percentOfSalePerPaymentMethod(
+      {double methodPaymentTotal, double total}) {
+    if(total == 0){
+      return 0;
+    } else {
+
+      double percent = (methodPaymentTotal * 100) / total;
+
+      return double.parse(percent.round().toString());
+    }
   }
 }

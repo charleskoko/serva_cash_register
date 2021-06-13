@@ -12,10 +12,11 @@ class ArticleList extends StatelessWidget {
       padding: EdgeInsets.all(8),
       child: GridView.builder(
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: 220,
-              childAspectRatio: 1,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10),
+            maxCrossAxisExtent: 300,
+            childAspectRatio: 3,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10
+          ),
           itemCount: products.length,
           itemBuilder: (BuildContext ctx, index) {
             return ArticleCard(product: products[index]);

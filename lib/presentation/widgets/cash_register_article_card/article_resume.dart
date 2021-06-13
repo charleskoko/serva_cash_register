@@ -9,7 +9,6 @@ class ArticleResume extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(right: 4),
-      width: MediaQuery.of(context).size.width,
       height: 30,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,

@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:serva_cash_register/logic/utility.dart';
 
 class ChangeValue extends StatelessWidget {
-final List<Map<String, dynamic>> listing;
-final Map<String, dynamic> paymentMethod;
+  final List<Map<String, dynamic>> listing;
+  final Map<String, dynamic> paymentMethod;
 
-ChangeValue({this.listing, this.paymentMethod});
+  ChangeValue({this.listing, this.paymentMethod});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,13 +14,8 @@ ChangeValue({this.listing, this.paymentMethod});
       alignment: Alignment.center,
       width: MediaQuery.of(context).size.width,
       child: Text(
-        Utility.change(
-            Utility.grossTotal(Utility.totalNet(
-                listing)),
-            paymentMethod),
-        style: TextStyle(
-            fontFamily: 'SourceSansPro',
-            fontSize: 30),
+        Utility.change(Utility.totalNet(listing), paymentMethod),
+        style: TextStyle(fontFamily: 'SourceSansPro', fontSize: 40),
       ),
     );
   }

@@ -53,51 +53,51 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                             child: Opacity(
                               opacity: a1.value,
                               child: AlertDialog(
+                                title: Container(
+                                  alignment: Alignment.centerLeft,
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        FontAwesomeIcons.infoCircle,
+                                        size: 40,
+                                        color: Colors.red.shade400,
+                                      ),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
+                                      Text(
+                                        'Suppression de la liste',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: 'SourceSansPro',
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
+                                ),
                                 contentPadding: EdgeInsets.zero,
                                 shape: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(16.0)),
                                 content: Container(
-                                  width: 500,
-                                  height: 200,
+                                  alignment: Alignment.centerLeft,
+                                  padding: EdgeInsets.only(left: 55),
+                                  width: 550,
+                                  height: 180,
                                   child: Column(
                                     children: [
-                                      Container(
-                                        padding: EdgeInsets.all(10),
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        decoration: BoxDecoration(
-                                          border: Border(
-                                            bottom:
-                                                BorderSide(color: Colors.grey),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              'attention'.toUpperCase(),
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontFamily: 'SourceSansPro'),
-                                            )
-                                          ],
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        'Voulez-vous supprimer la liste? Cette '
+                                        'action supprimera tous les articles de la liste en cours',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontFamily: 'SourceSansPro',
                                         ),
                                       ),
-                                      SizedBox(height: 10),
-                                      Container(
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        padding: EdgeInsets.all(10),
-                                        child: Text(
-                                          'Voulez-vous vraiment supprimer la liste en cours?',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: 'SourceSansPro',
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
+                                      SizedBox(height: 30),
                                       Container(
                                         padding: EdgeInsets.only(
                                             left: 20, right: 20),
@@ -106,17 +106,14 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                               MainAxisAlignment.end,
                                           children: [
                                             TextButton(
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  'Annuler',
-                                                  style: TextStyle(
-                                                      fontFamily:
-                                                          'SourceSansPro',
-                                                      fontSize: 18,
-                                                      color: Colors.blue),
-                                                ),
+                                              child: Text(
+                                                'Annuler',
+                                                style: TextStyle(
+                                                    fontFamily: 'SourceSansPro',
+                                                    fontSize: 20,
+                                                    fontWeight: FontWeight.bold,
+                                                    color:
+                                                        Colors.grey.shade800),
                                               ),
                                               style: TextButton.styleFrom(
                                                 primary: Colors.green.shade300,
@@ -127,20 +124,18 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                             ),
                                             SizedBox(width: 20),
                                             TextButton(
-                                              child: Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Text(
-                                                  'Effacer',
-                                                  style: TextStyle(
-                                                    fontFamily: 'SourceSansPro',
-                                                    fontSize: 18,
-                                                  ),
+                                              child: Text(
+                                                'Supprimer',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontFamily: 'SourceSansPro',
+                                                  fontSize: 20,
                                                 ),
                                               ),
                                               style: TextButton.styleFrom(
-                                                primary: Colors.white,
-                                                backgroundColor: Colors.blue,
+                                                primary: Colors.red,
+                                                backgroundColor:
+                                                    Colors.red.shade100,
                                                 onSurface: Colors.grey,
                                               ),
                                               onPressed: () {
@@ -148,7 +143,6 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                                 BlocProvider.of<ListingCubit>(
                                                         context)
                                                     .deleteList();
-                                                ;
                                               },
                                             )
                                           ],
@@ -172,7 +166,7 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                     padding: const EdgeInsets.all(5.0),
                     child: Icon(
                       FontAwesomeIcons.trashAlt,
-                      color: Colors.blue.shade300,
+                      color: Color(0xff973be8),
                       size: 35,
                     ),
                   ),
@@ -218,7 +212,7 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                     return TextButton(
                       style: TextButton.styleFrom(
                         primary: Colors.white,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color(0xff973be8),
                         onSurface: Colors.grey,
                       ),
                       child: Padding(
@@ -247,6 +241,29 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                 child: Opacity(
                                   opacity: a1.value,
                                   child: AlertDialog(
+                                    title: Container(
+                                      alignment: Alignment.centerLeft,
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            FontAwesomeIcons.save,
+                                            size: 40,
+                                            color: Colors.green.shade400,
+                                          ),
+                                          SizedBox(
+                                            width: 15,
+                                          ),
+                                          Text(
+                                            'Enregistrements',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontFamily: 'SourceSansPro',
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold),
+                                          )
+                                        ],
+                                      ),
+                                    ),
                                     shape: OutlineInputBorder(
                                         borderRadius:
                                             BorderRadius.circular(16.0)),
@@ -255,27 +272,6 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                       height: 410,
                                       child: Column(
                                         children: [
-                                          Container(
-                                            padding: EdgeInsets.all(8),
-                                            alignment: Alignment.center,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            decoration: BoxDecoration(
-                                              border: Border(
-                                                bottom: BorderSide(
-                                                  color: Colors.grey.shade200,
-                                                ),
-                                              ),
-                                            ),
-                                            child: Text(
-                                              'Achats enregistrées'
-                                                  .toUpperCase(),
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  fontFamily: 'SourceSansPro'),
-                                            ),
-                                          ),
                                           Expanded(
                                             child: BlocBuilder(
                                                 bloc: BlocProvider.of<
@@ -404,18 +400,15 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                     return TextButton(
                       style: TextButton.styleFrom(
                         primary: Colors.white,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color(0xff973be8),
                         onSurface: Colors.grey,
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Text(
-                          'Enregistrer la vente',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'SourceSansPro',
-                            fontSize: 20,
-                          ),
+                      child: Text(
+                        'Enregistrer la vente',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'SourceSansPro',
+                          fontSize: 20,
                         ),
                       ),
                       onPressed: () {
@@ -436,36 +429,37 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                   child: Opacity(
                                     opacity: a1.value,
                                     child: AlertDialog(
+                                      title: Container(
+                                        alignment: Alignment.centerLeft,
+                                        child: Row(
+                                          children: [
+                                            Icon(
+                                              FontAwesomeIcons.keyboard,
+                                              size: 40,
+                                              color: Colors.green.shade400,
+                                            ),
+                                            SizedBox(
+                                              width: 15,
+                                            ),
+                                            Text(
+                                              'Label de la liste à enregistrer',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontFamily: 'SourceSansPro',
+                                                  fontSize: 25,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                                       shape: OutlineInputBorder(
                                           borderRadius:
                                               BorderRadius.circular(16.0)),
                                       content: Container(
                                         width: 500,
-                                        height: 210,
+                                        height: 170,
                                         child: Column(
                                           children: [
-                                            Container(
-                                              padding: EdgeInsets.all(8),
-                                              alignment: Alignment.center,
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              decoration: BoxDecoration(
-                                                border: Border(
-                                                  bottom: BorderSide(
-                                                    color: Colors.grey.shade200,
-                                                  ),
-                                                ),
-                                              ),
-                                              child: Text(
-                                                'label'.toUpperCase(),
-                                                style: TextStyle(
-                                                    fontSize: 25,
-                                                    fontFamily:
-                                                        'SourceSansPro'),
-                                              ),
-                                            ),
-                                            SizedBox(height: 10),
                                             Container(
                                               alignment: Alignment.center,
                                               width: 450,
@@ -528,10 +522,15 @@ class RegisterScreenSaleNavbarCurrentSale extends StatelessWidget {
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
-                                              height: 30,
+                                              height: 50,
                                               child: TextButton(
                                                 child: Text(
-                                                    'valider'.toUpperCase()),
+                                                  'Valider',
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20),
+                                                ),
                                                 style: TextButton.styleFrom(
                                                   primary: Colors.white,
                                                   backgroundColor: Colors.blue,

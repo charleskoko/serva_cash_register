@@ -159,16 +159,17 @@ class CashPaymentContent extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 25),
           BlocBuilder<NumericPadCubit, NumericPadState>(
               builder: (context, state) {
             return TextButton(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10),
                 child: Text(
-                  'Cloturer'.toUpperCase(),
+                  'Terminer',
                   style: TextStyle(
                     fontFamily: 'SourceSansPro',
+                    fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
@@ -176,20 +177,22 @@ class CashPaymentContent extends StatelessWidget {
               style: TextButton.styleFrom(
                 primary: Colors.white,
                 backgroundColor: Utility.checkCash(state.value, grossTotal)
-                    ? Colors.blue
-                    : Colors.blue.shade100,
+                    ? Colors.deepPurpleAccent
+                    : Colors.deepPurpleAccent.shade100,
                 onSurface: Colors.grey,
               ),
               onPressed: () {
                 if (Utility.checkCash(state.value, grossTotal) == true) {
                   Map<String, dynamic> paymentMethod = {
-                    'paymentMethod': 'cash',
+                    'paymentMethod': 'PAYMENT_CASH',
                     'value': state.value
                   };
                   Navigator.of(context).pushNamed('/paymentCompleted');
                   BlocProvider.of<PaymentCompletedCubit>(context)
                       .paymentCompleted(paymentMethod);
                   BlocProvider.of<ListingCubit>(context).updatedLocalListing();
+                  BlocProvider.of<ListingCubit>(context)
+                      .saveOrder(paymentMethod);
                 }
               },
             );

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serva_cash_register/data/models/article.dart';
 import 'package:serva_cash_register/logic/home_cubit.dart';
 import 'package:serva_cash_register/logic/initial_balance_cubit.dart';
@@ -34,6 +35,29 @@ class _MultipleEntryPopUpState extends State<MultipleEntryPopUp> {
           child: Opacity(
             opacity: widget.a1.value,
             child: AlertDialog(
+              title: Container(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.keyboard,
+                      size: 40,
+                      color: Colors.green.shade400,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'Nouvelle quantité',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'SourceSansPro',
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
               contentPadding: EdgeInsets.all(0),
               shape:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(16.0)),
@@ -42,29 +66,12 @@ class _MultipleEntryPopUpState extends State<MultipleEntryPopUp> {
                 height: 415,
                 child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.grey.shade200,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        'quantité'.toUpperCase(),
-                        style: TextStyle(
-                            fontSize: 25, fontFamily: 'SourceSansPro'),
-                      ),
-                    ),
                     SizedBox(height: 10),
                     Container(
                       child: Text(
                         (cashFund == null) ? 0.toString() : cashFund,
                         style: TextStyle(
-                            fontFamily: 'SourceSansPro', fontSize: 20),
+                            fontFamily: 'SourceSansPro', fontSize: 30),
                       ),
                     ),
                     SizedBox(height: 10),
@@ -72,6 +79,7 @@ class _MultipleEntryPopUpState extends State<MultipleEntryPopUp> {
                         child: Container(
                       child: Column(
                         children: [
+                          SizedBox(height: 40),
                           Container(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -340,16 +348,11 @@ class _MultipleEntryPopUpState extends State<MultipleEntryPopUp> {
                                 backgroundColor: Colors.blue,
                                 onSurface: Colors.grey,
                               ),
-                              child: Container(
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.all(5),
-                                width: 150,
-                                child: Text(
-                                  'Valider'.toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontFamily: 'SourceSansPro',
-                                  ),
+                              child: Text(
+                                'Valider',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'SourceSansPro',
                                 ),
                               ))
                         ],

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serva_cash_register/data/models/article.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/utility.dart';
@@ -40,7 +39,7 @@ class ArticleCard extends StatelessWidget {
                     ),
                   );
                 },
-                transitionDuration: Duration(milliseconds: 200),
+                transitionDuration: Duration(milliseconds: 500),
                 barrierDismissible: true,
                 barrierLabel: '',
                 context: context,
@@ -51,13 +50,12 @@ class ArticleCard extends StatelessWidget {
           child: Container(
             color: (Utility.selectedArticle(product, state.listing) == 0)
                 ? Colors.white
-                : Colors.blue,
+                :  Color(0xff973be8),
             child: Column(
               children: [
                 ArticleResume(
                   articleSum: Utility.selectedArticle(product, state.listing),
                 ),
-                (product.imageUrl != null) ? ArticleImage() : ArticleNoImage(),
                 ArticleInfo(
                   product: product,
                 )

@@ -3,7 +3,7 @@ import 'package:meta/meta.dart';
 import 'package:serva_cash_register/data/models/User.dart';
 import 'package:serva_cash_register/data/repositories/setting_repository.dart';
 
-part 'settings_state.dart';
+part 'states/settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
   final SettingRepository _settingRepository;

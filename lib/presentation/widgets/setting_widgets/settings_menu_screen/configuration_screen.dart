@@ -97,12 +97,7 @@ class ConfigurationScreen extends StatelessWidget {
                                                   state.companies[index];
 
                                               return InkWell(
-                                                onTap: () {
-                                                  BlocProvider.of<CompanyCubit>(
-                                                          context)
-                                                      .selectCompany(
-                                                          company, state);
-                                                },
+                                                onTap: () {},
                                                 child: Container(
                                                   decoration: BoxDecoration(
                                                       border: Border(

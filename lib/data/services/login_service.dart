@@ -13,9 +13,8 @@ class LoginService {
     String token = jsonEncode(response['token']);
     _localTokenProvider.writeToken(token);
     _localAuthUserProvider.writeAuthUser(user);
-    final User userd = await _localAuthUserProvider.readAuthUser();
-    final String test = await _localTokenProvider.readToken();
-    //print(userd);
+    await _localAuthUserProvider.readAuthUser();
+    await _localTokenProvider.readToken();
   }
 
   Future<User> readAuthUser() async {

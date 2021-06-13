@@ -63,7 +63,7 @@ class PaymentMethodScreen extends StatelessWidget {
               BlocBuilder<ListingCubit, ListingState>(
                 builder: (context, state) {
                   return GrossTotalCard(
-                    total: Utility.grossTotal(Utility.totalNet(state.listing)),
+                    total: Utility.totalNet(state.listing),
                   );
                 },
               ),
@@ -76,8 +76,8 @@ class PaymentMethodScreen extends StatelessWidget {
                     } else if (state is CashSelected) {
                       return BlocBuilder<ListingCubit, ListingState>(
                         builder: (context, state) {
-                          return CashPaymentContent(Utility.grossTotal(
-                              Utility.totalNet(state.listing)));
+                          return CashPaymentContent(
+                              Utility.totalNet(state.listing));
                         },
                       );
                     } else {

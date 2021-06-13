@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:serva_cash_register/logic/home_cubit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:serva_cash_register/core/exceptions.dart';
 import 'package:serva_cash_register/logic/initial_balance_cubit.dart';
-import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/presentation/widgets/numeric_pad_button.dart';
+
+import 'login_screen/unauthorized_error_pop_up.dart';
 
 class CashFundPopUp extends StatefulWidget {
   final double curvedValue;
@@ -28,6 +30,28 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
           Navigator.of(context).popUntil((route) => false);
           Navigator.of(context).pushNamed('/register');
         }
+        if (state is InitialBalanceError) {
+          Navigator.of(context).pop();
+          showGeneralDialog(
+              barrierColor: Colors.black.withOpacity(0.5),
+              transitionBuilder: (context, a1, a2, widget) {
+                final curvedValue =
+                    Curves.easeInOutBack.transform(a1.value) - 1.0;
+                return Transform(
+                  transform:
+                      Matrix4.translationValues(0.0, curvedValue * 200, 0.0),
+                  child: Opacity(
+                    opacity: a1.value,
+                    child: UnauthorizedErrorPopUp(state.message),
+                  ),
+                );
+              },
+              transitionDuration: Duration(milliseconds: 500),
+              barrierDismissible: true,
+              barrierLabel: '',
+              context: context,
+              pageBuilder: (context, animation1, animation2) {});
+        }
       },
       builder: (context, state) {
         return Transform(
@@ -36,37 +60,45 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
           child: Opacity(
             opacity: widget.a1.value,
             child: AlertDialog(
+              title: Container(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.keyboard,
+                      size: 40,
+                      color: Colors.green.shade400,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'Solde initiale',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'SourceSansPro',
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
               contentPadding: EdgeInsets.all(0),
               shape:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(16.0)),
               content: Container(
                 width: 500,
-                height: 415,
+                height: 425,
                 child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.grey.shade200,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        'solde initial'.toUpperCase(),
-                        style: TextStyle(
-                            fontSize: 25, fontFamily: 'SourceSansPro'),
-                      ),
-                    ),
                     SizedBox(height: 10),
                     Container(
                       child: Text(
-                        (cashFund == null) ? 0.toString() : cashFund,
+                        (cashFund == null)
+                            ? 0.toString() + ' XOF'
+                            : cashFund + ' XOF',
                         style: TextStyle(
-                            fontFamily: 'SourceSansPro', fontSize: 20),
+                            fontFamily: 'SourceSansPro', fontSize: 30),
                       ),
                     ),
                     SizedBox(height: 10),
@@ -74,6 +106,7 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                         child: Container(
                       child: Column(
                         children: [
+                          SizedBox(height: 40),
                           Container(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -329,10 +362,10 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: 30),
                           BlocBuilder<InitialBalanceCubit, InitialBalanceState>(
                               builder: (context, state) {
-                            if (state is InitialBalanceInitial) {
+                            if (state is InitialBalanceInitial || state is InitialBalanceError) {
                               return TextButton(
                                 onPressed: () {
                                   BlocProvider.of<InitialBalanceCubit>(context)
@@ -340,36 +373,28 @@ class _CashFundPopUpState extends State<CashFundPopUp> {
                                 },
                                 style: TextButton.styleFrom(
                                   primary: Colors.white,
-                                  backgroundColor: Colors.blue,
+                                  backgroundColor: Color(0xff973be8),
                                   onSurface: Colors.grey,
                                 ),
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.all(5),
-                                  width: 150,
-                                  height: 60,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
                                   child: Text(
-                                    'Valider'.toUpperCase(),
+                                    'Continuer',
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
                                       fontFamily: 'SourceSansPro',
                                     ),
                                   ),
                                 ),
                               );
                             } else {
-                              return TextButton(
-                                onPressed: () {},
-                                style: TextButton.styleFrom(
-                                  primary: Colors.white,
-                                  backgroundColor: Colors.blue,
-                                  onSurface: Colors.grey,
-                                ),
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  padding: EdgeInsets.all(5),
-                                  width: 150,
-                                  child: SpinKitCircle(color: Colors.black),
+                              return Container(
+                                alignment: Alignment.center,
+                                width: 150,
+                                child: SpinKitCircle(
+                                  color: Colors.black,
+                                  size: 20,
                                 ),
                               );
                             }

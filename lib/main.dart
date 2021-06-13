@@ -4,13 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:serva_cash_register/data/data_provider/serva_helper.dart';
 import 'package:serva_cash_register/data/repositories/company_repository.dart';
 import 'package:serva_cash_register/data/repositories/home_repository.dart';
+import 'package:serva_cash_register/data/repositories/invoice_repository.dart';
 import 'package:serva_cash_register/data/repositories/listing_repository.dart';
 import 'package:serva_cash_register/data/repositories/article_repository.dart';
+import 'package:serva_cash_register/data/repositories/user_service_repository.dart';
 import 'package:serva_cash_register/data/services/locator_service.dart';
 import 'package:serva_cash_register/logic/auth_cubit.dart';
 import 'package:serva_cash_register/logic/initial_balance_cubit.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/company_cubit.dart';
+import 'package:serva_cash_register/logic/initialization_cubit.dart';
+import 'package:serva_cash_register/logic/invoice_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/logic/local_order_item_cubit.dart';
 import 'package:serva_cash_register/logic/login_cubit.dart';
@@ -18,9 +22,12 @@ import 'package:serva_cash_register/logic/numeric_pad_cubit.dart';
 import 'package:serva_cash_register/logic/payment_completed_cubit.dart';
 import 'package:serva_cash_register/logic/payment_method_cubit.dart';
 import 'package:serva_cash_register/logic/settings_cubit.dart';
+import 'package:serva_cash_register/logic/summary_cubit.dart';
+import 'package:serva_cash_register/logic/text_field_error_cubit.dart';
 import 'package:serva_cash_register/presentation/router/app_router.dart';
 
 import 'data/repositories/auth_repository.dart';
+import 'data/repositories/initialization_repository.dart';
 import 'data/repositories/login_repository.dart';
 import 'data/repositories/setting_repository.dart';
 import 'logic/article_cubit.dart';
@@ -28,16 +35,20 @@ import 'logic/home_cubit.dart';
 
 void main() {
   setupServiceLocator();
+
   runApp(
     MyApp(
       appRouter: AppRouter(),
       listingRepository: ListingRepository(),
       authRepository: AuthRepository(),
       loginRepository: LoginRepository(),
+      userServiceRepository: UserServiceRepository(),
       homeRepository: HomeRepository(),
       companyRepository: CompanyRepository(),
       settingRepository: SettingRepository(),
       articleRepository: ArticleRepository(),
+      invoiceRepository: InvoiceRepository(),
+      initializationRepository: InitializationRepository(),
     ),
   );
 }
@@ -47,20 +58,26 @@ class MyApp extends StatefulWidget {
   final ArticleRepository articleRepository;
   final ListingRepository listingRepository;
   final AuthRepository authRepository;
+  final UserServiceRepository userServiceRepository;
   final LoginRepository loginRepository;
   final HomeRepository homeRepository;
   final CompanyRepository companyRepository;
   final SettingRepository settingRepository;
+  final InvoiceRepository invoiceRepository;
+  final InitializationRepository initializationRepository;
 
   const MyApp({
     Key key,
     @required this.appRouter,
     @required this.articleRepository,
     @required this.companyRepository,
+    @required this.invoiceRepository,
+    @required this.userServiceRepository,
     @required this.authRepository,
     @required this.loginRepository,
     @required this.homeRepository,
     @required this.settingRepository,
+    @required this.initializationRepository,
     this.listingRepository,
   }) : super(key: key);
 
@@ -87,8 +104,13 @@ class _MyAppState extends State<MyApp> {
     ]);
     return MultiBlocProvider(
       providers: [
+        BlocProvider<InitializationCubit>(
+          create: (context) =>
+              InitializationCubit(widget.initializationRepository),
+        ),
         BlocProvider<AuthCubit>(
-          create: (context) => AuthCubit(widget.authRepository),
+          create: (context) => AuthCubit(widget.authRepository,
+              initializationCubit: context.read<InitializationCubit>()),
         ),
         BlocProvider<LoginCubit>(
           create: (context) => LoginCubit(widget.loginRepository),
@@ -125,6 +147,15 @@ class _MyAppState extends State<MyApp> {
         ),
         BlocProvider<PaymentCompletedCubit>(
           create: (context) => PaymentCompletedCubit(),
+        ),
+        BlocProvider<TextFieldErrorCubit>(
+          create: (context) => TextFieldErrorCubit(),
+        ),
+        BlocProvider<InvoiceCubit>(
+          create: (context) => InvoiceCubit(widget.invoiceRepository),
+        ),
+        BlocProvider<SummaryCubit>(
+          create: (context) => SummaryCubit(widget.userServiceRepository),
         ),
       ],
       child: MaterialApp(

@@ -11,7 +11,6 @@ import 'package:serva_cash_register/presentation/widgets/payment_completed_widge
 import 'package:serva_cash_register/presentation/widgets/payment_completed_widget/payment_completed_title.dart';
 import 'package:serva_cash_register/presentation/widgets/payment_completed_widget/payment_completed_with_cash.dart';
 import 'package:serva_cash_register/data/models/list_item.dart';
-import 'package:serva_cash_register/data/models/list_item.dart';
 
 class PaymentCompletedScreen extends StatelessWidget {
   @override
@@ -37,20 +36,21 @@ class PaymentCompletedScreen extends StatelessWidget {
                             BlocBuilder<ListingCubit, ListingState>(
                               builder: (context, listState) {
                                 return BlocBuilder<PaymentCompletedCubit,
-                                        PaymentCompletedState>(
-                                    builder: (context, state) {
-                                  return ChangeValue(
-                                    listing: listState.listing,
-                                    paymentMethod: state.paymentMethod,
-                                  );
-                                });
+                                    PaymentCompletedState>(
+                                  builder: (context, state) {
+                                    return ChangeValue(
+                                      listing: listState.listing,
+                                      paymentMethod: state.paymentMethod,
+                                    );
+                                  },
+                                );
                               },
                             ),
                             BlocBuilder<PaymentCompletedCubit,
                                 PaymentCompletedState>(
                               builder: (context, state) {
                                 if (state.paymentMethod['paymentMethod'] ==
-                                    'cash') {
+                                    'PAYMENT_CASH') {
                                   return PaymentCompletedWithCash(
                                       cash: state.paymentMethod['value']);
                                 } else {
@@ -58,21 +58,19 @@ class PaymentCompletedScreen extends StatelessWidget {
                                       ListingState>(
                                     builder: (context, listState) {
                                       return Container(
-                                        alignment: Alignment.center,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        child: Text(
-                                          'de ' +
-                                              Utility.grossTotal(
-                                                      Utility.totalNet(
-                                                          listState.listing))
-                                                  .toString() +
-                                              ' XOF',
-                                          style: TextStyle(
-                                              fontFamily: 'SourceSansPro',
-                                              fontSize: 20),
-                                        ),
-                                      );
+                                          alignment: Alignment.center,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          child: Text(
+                                            'de ' +
+                                                Utility.totalNet(
+                                                        listState.listing)
+                                                    .toString() +
+                                                ' XOF',
+                                            style: TextStyle(
+                                                fontFamily: 'SourceSansPro',
+                                                fontSize: 30),
+                                          ));
                                     },
                                   );
                                 }
@@ -110,9 +108,7 @@ class PaymentCompletedScreen extends StatelessWidget {
                                   backgroundColor: Colors.blue.shade100,
                                   onSurface: Colors.grey,
                                 ),
-                                onPressed: () {
-                                  print('Pressed');
-                                },
+                                onPressed: () {},
                               ),
                             ),
                             SizedBox(height: 20),
@@ -133,7 +129,7 @@ class PaymentCompletedScreen extends StatelessWidget {
                                 ),
                                 style: TextButton.styleFrom(
                                   primary: Colors.white,
-                                  backgroundColor: Colors.blue,
+                                  backgroundColor: Color(0xff973be8),
                                   onSurface: Colors.grey,
                                 ),
                                 onPressed: () {
@@ -179,7 +175,6 @@ class PaymentCompletedScreen extends StatelessWidget {
                                       return Container(
                                           child: item.buildTitle(context));
                                     });
-                                ;
                               });
                             },
                           ),

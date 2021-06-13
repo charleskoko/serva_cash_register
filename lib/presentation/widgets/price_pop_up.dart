@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:serva_cash_register/data/models/article.dart';
-import 'package:serva_cash_register/logic/home_cubit.dart';
-import 'package:serva_cash_register/logic/initial_balance_cubit.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:serva_cash_register/logic/cash_register_cubit.dart';
 import 'package:serva_cash_register/logic/listing_cubit.dart';
 import 'package:serva_cash_register/presentation/widgets/numeric_pad_button.dart';
@@ -33,6 +30,29 @@ class _PriceEntryPopUpState extends State<PriceEntryPopUp> {
           child: Opacity(
             opacity: widget.a1.value,
             child: AlertDialog(
+              title: Container(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    Icon(
+                      FontAwesomeIcons.keyboard,
+                      size: 40,
+                      color: Colors.green.shade400,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Text(
+                      'Nouveau prix',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontFamily: 'SourceSansPro',
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
+              ),
               contentPadding: EdgeInsets.all(0),
               shape:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(16.0)),
@@ -41,29 +61,12 @@ class _PriceEntryPopUpState extends State<PriceEntryPopUp> {
                 height: 415,
                 child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.all(8),
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.grey.shade200,
-                          ),
-                        ),
-                      ),
-                      child: Text(
-                        'Nouveau prix'.toUpperCase(),
-                        style: TextStyle(
-                            fontSize: 25, fontFamily: 'SourceSansPro'),
-                      ),
-                    ),
                     SizedBox(height: 10),
                     Container(
                       child: Text(
-                        (cashFund == null) ? 0.toString() : cashFund,
+                        (cashFund == null) ? 0.toString()+' XOF' : cashFund + ' XOF',
                         style: TextStyle(
-                            fontFamily: 'SourceSansPro', fontSize: 20),
+                            fontFamily: 'SourceSansPro', fontSize: 30),
                       ),
                     ),
                     SizedBox(height: 10),
@@ -71,6 +74,7 @@ class _PriceEntryPopUpState extends State<PriceEntryPopUp> {
                         child: Container(
                       child: Column(
                         children: [
+                          SizedBox(height: 40),
                           Container(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -326,7 +330,7 @@ class _PriceEntryPopUpState extends State<PriceEntryPopUp> {
                               ],
                             ),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: 30),
                           TextButton(
                               onPressed: () {
                                 BlocProvider.of<ListingCubit>(context)
@@ -341,16 +345,12 @@ class _PriceEntryPopUpState extends State<PriceEntryPopUp> {
                                 backgroundColor: Colors.blue,
                                 onSurface: Colors.grey,
                               ),
-                              child: Container(
-                                alignment: Alignment.center,
-                                padding: EdgeInsets.all(5),
-                                width: 150,
-                                child: Text(
-                                  'Valider'.toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontFamily: 'SourceSansPro',
-                                  ),
+                              child: Text(
+                                'Valider',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'SourceSansPro',
+                                  fontWeight: FontWeight.bold
                                 ),
                               ))
                         ],

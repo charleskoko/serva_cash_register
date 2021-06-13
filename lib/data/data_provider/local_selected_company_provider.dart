@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
+import 'package:serva_cash_register/core/exceptions.dart';
 import 'dart:io';
 import 'package:serva_cash_register/data/models/User.dart';
 import 'package:serva_cash_register/data/models/company.dart';
@@ -31,8 +32,7 @@ class LocalSelectedCompanyProvider {
       Company company = Company.fromJson(jsonDecode(contents));
       return company;
     } catch (e) {
-      print('error: $e');
-      return null;
+      throw FileSystemExceptionError();
     }
   }
 }

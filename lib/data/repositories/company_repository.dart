@@ -1,18 +1,22 @@
-import 'package:serva_cash_register/data/models/article.dart';
+import 'dart:io';
+
+import 'package:serva_cash_register/core/exceptions.dart';
 import 'package:serva_cash_register/data/models/company.dart';
 import 'package:serva_cash_register/data/services/company_service.dart';
 
 class CompanyRepository {
   CompanyService _companyService = CompanyService();
 
-  Future<List<Company>> getCompanies() async {
-    return await _companyService.getCompanies();
+  Future<Company> getCompany() async {
+    try {
+      final Company company = await _companyService.getSelectedCompany();
+      return company;
+    } on FileSystemException {
+      throw FileSystemExceptionError();
+    }
   }
 
-  Future<Company> getSelectedCompany() async {
-    return await _companyService.getSelectedCompany();
-  }
   Future<void> setSelectedCompany(Company company) async {
-     await _companyService.setSelectedCompany(company);
+    await _companyService.setSelectedCompany(company);
   }
 }

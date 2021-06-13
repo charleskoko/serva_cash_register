@@ -5,6 +5,8 @@ import 'package:serva_cash_register/data/services/listing_service.dart';
 
 class ListingRepository {
   ListingService _listingService = ListingService();
+
+
   List<Map<String, dynamic>> addArticleToListing(
       Article product, List<Map<String, dynamic>> listing,
       {String quantity, double price, Map<String, dynamic> article}) {
@@ -45,6 +47,8 @@ class ListingRepository {
     }
 
     listing.add(newArticle);
+    listing.sort((a, b) => b['quantity'].compareTo(a['quantity']));
+
     return listing;
   }
 
@@ -102,5 +106,10 @@ class ListingRepository {
 
   deleteLocalListing(String label) {
     _listingService.deleteLocalListing(label);
+  }
+
+  saveOrderItem(
+      List<Map<String, dynamic>> listing, Map<String, dynamic> paymentMethod) {
+    _listingService.saveOrderItems(listing, paymentMethod);
   }
 }

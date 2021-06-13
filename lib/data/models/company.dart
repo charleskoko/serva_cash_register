@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-import 'category.dart';
 
 class Company extends Equatable {
   String id, label, address, phone, fax;
@@ -24,5 +23,5 @@ class Company extends Equatable {
       };
 
   @override
-  List<Object> get props => [id, address, label, phone, phone];
+  List<Object> get props => [id, address, label, phone, fax];
 }
